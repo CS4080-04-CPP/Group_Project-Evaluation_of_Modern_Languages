@@ -19,11 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\MainMenu.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\MainMenu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\MainMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\cursor.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

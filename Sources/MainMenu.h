@@ -21,8 +21,16 @@ private:
     // Window object
     sf::RenderWindow window;
 
+    // Texture and Sprites
+    sf::Texture cursorTexture;
+    sf::Sprite cursorSprite;
+
+    sf::Texture backgroundTexture;
+    sf::Sprite backgroundSprite;
+
     // Initialization function
     void initWindow();
+    void loadResources();
 
     // Event handling function
     void processEvents();
@@ -33,7 +41,10 @@ private:
     // Rendering function
     void render();
 
-    // Your loop variables
+    // Resize the background to fit the window
+    void resizeBackground();
+
+    // Loop variables
     bool isRunning;
 };
 
