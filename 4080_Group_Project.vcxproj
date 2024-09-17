@@ -26,6 +26,7 @@
     <ClInclude Include="Sources\MainMenu.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\background.png" />
     <Image Include="Resources\cursor.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
