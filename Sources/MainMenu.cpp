@@ -7,6 +7,7 @@ SFMLApp::SFMLApp()
     initWindow();
     loadResources();
     isRunning = true;
+
 }
 
 // Destructor
@@ -50,17 +51,17 @@ void SFMLApp::loadResources()
     resizeBackground();
 }
 
-// Resize the background sprite to match the window size
 void SFMLApp::resizeBackground()
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = backgroundTexture.getSize();
-
+    
     // Scale the background to fit the window
     float scaleX = static_cast<float>(windowSize.x) / textureSize.x;
     float scaleY = static_cast<float>(windowSize.y) / textureSize.y;
 
-    backgroundSprite.setScale(scaleX+1, scaleY+1);
+    backgroundSprite.setScale(scaleX +1, scaleY +1);
+
 }
 
 
@@ -82,10 +83,19 @@ void SFMLApp::render()
 
     window.draw(backgroundSprite);
 
-    // Get the current mouse position
+    // Get the current mouse position relative to the window
     sf::Vector2i localMousePos = sf::Mouse::getPosition(window);
-   
-    cursorSprite.setPosition(static_cast<float>(localMousePos.x), static_cast<float>(localMousePos.y));
+
+    // Get window size and apply scaling similar to the background scaling
+    sf::Vector2u windowSize = window.getSize();
+    sf::Vector2u textureSize = backgroundTexture.getSize();
+
+    // Scale the cursor's position
+    float scaledMouseX = static_cast<float>(localMousePos.x);
+    float scaledMouseY = static_cast<float>(localMousePos.y);
+
+    // Set the cursor's scaled position
+    cursorSprite.setPosition(scaledMouseX , scaledMouseY);
     window.draw(cursorSprite);
 
     window.display();
