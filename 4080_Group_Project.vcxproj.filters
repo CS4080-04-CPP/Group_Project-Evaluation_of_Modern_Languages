@@ -13,26 +13,61 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\MainMenu">
+      <UniqueIdentifier>{4bfe82d6-bdf3-4784-9368-11271884fbf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{1069f102-61d2-4e2e-b81c-45fffc503d54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameLogic">
+      <UniqueIdentifier>{7a987c37-9724-492e-8e57-eb16da1f2384}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\LevelMenu.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\MainMenu.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\EventHandler.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Render.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Level_One.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\ResourceManager.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Networking.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\MainMenu.h">
+    <ClInclude Include="Sources\Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\cursor.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\background.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\MainMenu</Filter>
     </Image>
+    <Image Include="Resources\cursor.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="Resources\background_Blur.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Pacifico.ttf">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Font>
   </ItemGroup>
 </Project>

@@ -1,130 +1,83 @@
-#include "MainMenu.h"
-#include <iostream>
+#include "Main.h"
 
-// Constructor
-SFMLApp::SFMLApp()
+bool Socket_enabled;
+
+void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState)
 {
-    initWindow();
-    loadResources();
-    isRunning = true;
-
-}
-
-// Destructor
-SFMLApp::~SFMLApp()
-{
-}
-
-// Initialize the window
-void SFMLApp::initWindow()
-{
-
-    window.create(sf::VideoMode(1920, 1080), "SFML Application");
-    window.setFramerateLimit(60); 
-    window.setMouseCursorVisible(false);
-
-}
-
-// Load the resources (textures, sprites)
-void SFMLApp::loadResources()
-{
-    // Load the bubble texture
-    if (!cursorTexture.loadFromFile("Resources/cursor.png"))
+    // Load the font
+    sf::Font font;
+    if (!font.loadFromFile("Resources/Pacifico.ttf")) // Load a font
     {
-        std::cerr << "Error: Could not load cursor texture." << std::endl;
-        isRunning = false;
+        std::cerr << "Error: Could not load font." << std::endl;
+        return; // Early exit if font loading fails
     }
 
-    // Set up the sprite
-    cursorSprite.setTexture(cursorTexture);
-    cursorSprite.setOrigin(cursorTexture.getSize().x / 2.f, cursorTexture.getSize().y / 2.f); // Set origin to center
+    // Create text objects
+    sf::Text singlePlayer("Single Player", font, 40);
+    sf::Text coOp("Co-Op", font, 40);
+    sf::Text exit("Exit", font, 40);
+    sf::Text host("Host", font, 60);
+    sf::Text connect("Connect", font, 60);
 
-    // Load the background texture
-    if (!backgroundTexture.loadFromFile("Resources/background.png"))
-    {
-        std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
-    }
-    backgroundSprite.setTexture(backgroundTexture);
+    // Set initial color to black
+    singlePlayer.setFillColor(sf::Color::Black);
+    coOp.setFillColor(sf::Color::Black);
+    exit.setFillColor(sf::Color::Black);
+    host.setFillColor(sf::Color::Black);
+    connect.setFillColor(sf::Color::Black);
 
-    // Resize the background to fit the window
-    resizeBackground();
-}
-
-void SFMLApp::resizeBackground()
-{
-    sf::Vector2u windowSize = window.getSize();
-    sf::Vector2u textureSize = backgroundTexture.getSize();
-    
-    // Scale the background to fit the window
-    float scaleX = static_cast<float>(windowSize.x) / textureSize.x;
-    float scaleY = static_cast<float>(windowSize.y) / textureSize.y;
-
-    backgroundSprite.setScale(scaleX +1, scaleY +1);
-
-}
-
-
-// Main game loop
-void SFMLApp::run()
-{
-    while (isRunning && window.isOpen())
-    {
-        processEvents();  // Handle input
-        update();         // Update game state
-        render();         // Draw everything to the window
-    }
-}
-
-// Rendering function
-void SFMLApp::render()
-{
-    window.clear();
-
-    window.draw(backgroundSprite);
+    // Set positions
+    singlePlayer.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 300); // Center text
+    coOp.setPosition(screenWidth / 2 + 650, screenHeight / 2 - 240); // Center text
+    exit.setPosition(screenWidth / 2 + 650, screenHeight / 2 - 180); // Center text
+    host.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 300); // Center text
+    connect.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 220); // Center text
 
     // Get the current mouse position relative to the window
-    sf::Vector2i localMousePos = sf::Mouse::getPosition(window);
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-    // Get window size and apply scaling similar to the background scaling
-    sf::Vector2u windowSize = window.getSize();
-    sf::Vector2u textureSize = backgroundTexture.getSize();
-
-    // Scale the cursor's position
-    float scaledMouseX = static_cast<float>(localMousePos.x);
-    float scaledMouseY = static_cast<float>(localMousePos.y);
-
-    // Set the cursor's scaled position
-    cursorSprite.setPosition(scaledMouseX , scaledMouseY);
-    window.draw(cursorSprite);
-
-    window.display();
-}
-
-// Event handling function
-void SFMLApp::processEvents()
-{
-    sf::Event event;
-    while (window.pollEvent(event))
+    // Change color if mouse is hovering over the text
+    if (singlePlayer.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
     {
-        // Handle window resize
-        if (event.type == sf::Event::Resized)
-        {
-            // Resize the background when the window is resized
-            resizeBackground();
-        }
+        singlePlayer.setFillColor(sf::Color::Red); // Change to red
+    }
 
-        // Close window or press escape key to exit
-        if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
+    if (coOp.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
+    {
+        coOp.setFillColor(sf::Color::Red); // Change to red
+    }
+
+    if (exit.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
+    {
+        exit.setFillColor(sf::Color::Red); // Change to red
+    }
+
+    if (host.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
+    {
+        host.setFillColor(sf::Color::Red); // Change to red
+    }
+
+    if (connect.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
+    {
+        connect.setFillColor(sf::Color::Red); // Change to red
+    }
+
+    // Draw the texts
+    if (mainMenuState)
+    {
+
+        window.draw(singlePlayer);
+        window.draw(coOp);
+        window.draw(exit);
+    }
+    else
+    {
+
+        if (Socket_Enabled == true)
         {
-            window.close();
-            isRunning = false;
+
+            window.draw(host);
+            window.draw(connect);
         }
     }
-}
-
-// Update logic
-void SFMLApp::update()
-{
-    // No specific update logic needed for this version
 }

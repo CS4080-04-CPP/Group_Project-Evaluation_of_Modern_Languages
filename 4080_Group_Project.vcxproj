@@ -19,15 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\EventHandler.cpp" />
+    <ClCompile Include="Sources\LevelMenu.cpp" />
+    <ClCompile Include="Sources\Level_One.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\MainMenu.cpp" />
+    <ClCompile Include="Sources\Networking.cpp" />
+    <ClCompile Include="Sources\Render.cpp" />
+    <ClCompile Include="Sources\ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\MainMenu.h" />
+    <ClInclude Include="Sources\Main.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\background.png" />
+    <Image Include="Resources\background_Blur.png" />
     <Image Include="Resources\cursor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Pacifico.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
