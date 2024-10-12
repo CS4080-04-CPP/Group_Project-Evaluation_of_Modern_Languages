@@ -21,12 +21,16 @@
   <ItemGroup>
     <ClCompile Include="Sources\EventHandler.cpp" />
     <ClCompile Include="Sources\LevelMenu.cpp" />
+    <ClCompile Include="Sources\LevelMenuEvents.cpp" />
     <ClCompile Include="Sources\Level_One.cpp" />
+    <ClCompile Include="Sources\Level_OneEvents.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\MainMenu.cpp" />
+    <ClCompile Include="Sources\MainMenuEvents.cpp" />
     <ClCompile Include="Sources\Networking.cpp" />
     <ClCompile Include="Sources\Render.cpp" />
     <ClCompile Include="Sources\ResourceManager.cpp" />
+    <ClCompile Include="Sources\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Main.h" />

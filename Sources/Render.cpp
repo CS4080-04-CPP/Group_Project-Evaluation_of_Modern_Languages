@@ -4,8 +4,6 @@ void SFMLApp::render()
 {
     window.clear();
 
-    window.draw(mainMenuState ? backgroundSprite : backgroundBlurSprite);
-
     // Render the current state
     switch (currentState)
     {
@@ -30,28 +28,11 @@ void SFMLApp::render()
     window.display();
 }
 
-// Update logic
-void SFMLApp::update()
-{
-    // Update logic based on current state
-    switch (currentState)
-    {
-    case State::MAIN_MENU:
-        // No specific update logic needed for the main menu
-        break;
-    case State::LEVEL_SELECT:
-        // Update level select logic if necessary
-        break;
-    case State::PLAYING:
-        // Update game logic here
-        break;
-    }
-}
-
 
 // Render the main menu
 void SFMLApp::renderMainMenu()
 {
+    window.draw(mainMenuState ? backgroundSprite : backgroundBlurSprite);
     renderMainMenus(window, mainMenuState);
 }
 

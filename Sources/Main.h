@@ -14,6 +14,11 @@ extern bool Socket_Enabled;
 void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState);
 void renderLevelMenus(sf::RenderWindow& window);
 void renderLevel_One(sf::RenderWindow& window);
+
+void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool& mainMenuState, bool& Socket_Enabled, bool& isRunning);
+void handleLevelSelectEvents(sf::RenderWindow& window);
+void handlePlayingEvents(sf::RenderWindow& window);
+
 void hostGameLogic();
 void connectGameLogic();
 
@@ -27,6 +32,7 @@ public:
 
     void loadResources();
     void resizeBackground();
+    
 
     // Main loop
     void run();

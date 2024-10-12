@@ -34,7 +34,7 @@ SFMLApp::SFMLApp()
 void SFMLApp::initWindow()
 {
 
-    window.create(sf::VideoMode(screenWidth, screenHeight), "Programing_Concepts_Game_Demo");
+    window.create(sf::VideoMode(screenWidth, screenHeight), "Programing_Concepts_Game_Demo", sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(60);
     window.setMouseCursorVisible(false);
 }
@@ -58,4 +58,5 @@ SFMLApp::~SFMLApp()
     // Lifetime: Implicit resource deallocation occurs here as the class instance goes out of scope.
     // In cases where resources are dynamically allocated (e.g., using new), 
     // this is where explicit memory cleanup would take place.
+
 }
