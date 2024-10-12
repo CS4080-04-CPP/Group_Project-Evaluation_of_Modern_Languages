@@ -22,25 +22,25 @@
     <Filter Include="Source Files\GameLogic">
       <UniqueIdentifier>{7a987c37-9724-492e-8e57-eb16da1f2384}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Levels\Level_One">
+      <UniqueIdentifier>{de29a3d7-9a6f-4c56-861e-51ad375fe4bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels\LevelMenu">
+      <UniqueIdentifier>{4bc5376a-08b9-4a3f-a442-2043715898f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels\MainMenu">
+      <UniqueIdentifier>{aefee4cb-8155-4118-a493-efda25d379b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{68d6e72e-cb91-4eeb-97db-c6d24419dbc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\LevelMenu.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\MainMenu.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\EventHandler.cpp">
       <Filter>Source Files\GameLogic</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Render.cpp">
+    <ClCompile Include="Sources\Renderer.cpp">
       <Filter>Source Files\GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Level_One.cpp">
-      <Filter>Source Files\Levels</Filter>
     </ClCompile>
     <ClCompile Include="Sources\ResourceManager.cpp">
       <Filter>Source Files\GameLogic</Filter>
@@ -48,17 +48,29 @@
     <ClCompile Include="Sources\Networking.cpp">
       <Filter>Source Files\GameLogic</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\MainMenuEvents.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\LevelMenuEvents.cpp">
-      <Filter>Source Files\Levels</Filter>
+    <ClCompile Include="Sources\UpdateAnimation.cpp">
+      <Filter>Source Files\GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Level_OneEvents.cpp">
-      <Filter>Source Files\Levels</Filter>
+      <Filter>Source Files\Levels\Level_One</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Update.cpp">
-      <Filter>Source Files\GameLogic</Filter>
+    <ClCompile Include="Sources\Level_One.cpp">
+      <Filter>Source Files\Levels\Level_One</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\LevelMenuEvents.cpp">
+      <Filter>Source Files\Levels\LevelMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\LevelMenu.cpp">
+      <Filter>Source Files\Levels\LevelMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\MainMenuEvents.cpp">
+      <Filter>Source Files\Levels\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\MainMenu.cpp">
+      <Filter>Source Files\Levels\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Main.cpp">
+      <Filter>Source Files\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

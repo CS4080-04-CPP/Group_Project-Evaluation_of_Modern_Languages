@@ -28,9 +28,9 @@
     <ClCompile Include="Sources\MainMenu.cpp" />
     <ClCompile Include="Sources\MainMenuEvents.cpp" />
     <ClCompile Include="Sources\Networking.cpp" />
-    <ClCompile Include="Sources\Render.cpp" />
+    <ClCompile Include="Sources\Renderer.cpp" />
     <ClCompile Include="Sources\ResourceManager.cpp" />
-    <ClCompile Include="Sources\Update.cpp" />
+    <ClCompile Include="Sources\UpdateAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Main.h" />
