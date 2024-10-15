@@ -18,6 +18,18 @@ void SFMLApp::render()
         break;
     }
 
+    if (StateChange == 1)
+    {
+        currentState = State::LEVEL_SELECT;
+    }
+    else if (StateChange == 2)
+    {
+        currentState = State::PLAYING;
+    }
+    else {
+        currentState = State::MAIN_MENU;
+    }
+
     // Draw cursor
     sf::Vector2i localMousePos = sf::Mouse::getPosition(window);
     float scaledMouseX = static_cast<float>(localMousePos.x);
@@ -33,7 +45,8 @@ void SFMLApp::render()
 void SFMLApp::renderMainMenu()
 {
     window.draw(mainMenuState ? backgroundSprite : backgroundBlurSprite);
-    renderMainMenus(window, mainMenuState);
+    
+    renderMainMenus(window, mainMenuState, SelectbackgroundSpriteLeft, SelectbackgroundSpriteRight, SelectbackgroundSpriteLeftActive, SelectbackgroundSpriteRightActive);
 }
 
 // Render the level select screen
@@ -45,5 +58,5 @@ void SFMLApp::renderLevelMenu()
 // Render the game (placeholder for gameplay rendering)
 void SFMLApp::renderGame()
 {
-    renderLevel_One(window);
+    renderLevel_One(window, tempPlayerASprite, tempPlayerBSprite, tempPlayerASprite2, tempPlayerBSprite2);
 }

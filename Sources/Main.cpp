@@ -4,6 +4,13 @@ using namespace std;
 
 int screenWidth = 1920;
 int screenHeight = 1080;
+int StateChange;
+
+bool Connected;
+bool Host;
+bool HostCharacterSelection;
+bool ClientCharacterSelection;
+
 
 int main()
 {
@@ -12,9 +19,16 @@ int main()
 
     // Assume at first the player is by themselves.
     bool Socket_Enabled = false;
+    Host = true;
+    Connected = false;
+
+    // Boolean that controls when Level changes occur.
+    StateChange = 0;
 
     // Run the application
     app.run();
+
+
     return 0;
 }
 
@@ -28,6 +42,7 @@ SFMLApp::SFMLApp()
     isRunning = true;
     currentState = State::MAIN_MENU;    // Begins the program at the Main Menu State.
     mainMenuState = true;               // Determines if the background is blurred.
+
 }
 
 // Initialize the window

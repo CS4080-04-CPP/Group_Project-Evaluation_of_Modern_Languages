@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Character.cpp" />
+    <ClCompile Include="Sources\Character_A_Animation.cpp" />
+    <ClCompile Include="Sources\Character_B_Animation.cpp" />
     <ClCompile Include="Sources\EventHandler.cpp" />
     <ClCompile Include="Sources\LevelMenu.cpp" />
     <ClCompile Include="Sources\LevelMenuEvents.cpp" />
@@ -33,14 +36,20 @@
     <ClCompile Include="Sources\UpdateAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Character.h" />
     <ClInclude Include="Sources\Main.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\background.png" />
     <Image Include="Resources\background_Blur.png" />
+    <Image Include="Resources\CharacterA_Temp.png" />
+    <Image Include="Resources\CharacterB_Temp.png" />
+    <Image Include="Resources\characterSelectBox.png" />
+    <Image Include="Resources\characterSelectBoxActive.png" />
     <Image Include="Resources\cursor.png" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="Resources\KGHAPPY.ttf" />
     <Font Include="Resources\Pacifico.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

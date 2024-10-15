@@ -22,6 +22,27 @@ void SFMLApp::loadResources()
 
     backgroundSprite.setTexture(backgroundTexture);
 
+    // Load temp PlayerA texture
+    if (!tempPlayerATexture.loadFromFile("Resources/CharacterA_Temp.png"))
+    {
+        std::cerr << "Error: Could not load background texture." << std::endl;
+        isRunning = false;
+    }
+
+    tempPlayerASprite.setTexture(tempPlayerATexture);
+    tempPlayerASprite2.setTexture(tempPlayerATexture);
+
+    // Load temp PlayerB texture
+    if (!tempPlayerBTexture.loadFromFile("Resources/CharacterB_Temp.png"))
+    {
+        std::cerr << "Error: Could not load background texture." << std::endl;
+        isRunning = false;
+    }
+
+    tempPlayerBSprite.setTexture(tempPlayerBTexture);
+    tempPlayerBSprite2.setTexture(tempPlayerBTexture);
+
+
     // Load the background_blur texture
     if (!backgroundBlurTexture.loadFromFile("Resources/background_blur.png"))
     {
@@ -30,6 +51,26 @@ void SFMLApp::loadResources()
     }
 
     backgroundBlurSprite.setTexture(backgroundBlurTexture);
+
+    // Load the background texture
+    if (!SelectbackgroundTexture.loadFromFile("Resources/characterSelectBox.png"))
+    {
+        std::cerr << "Error: Could not load background texture." << std::endl;
+        isRunning = false;
+    }
+
+    SelectbackgroundSpriteLeft.setTexture(SelectbackgroundTexture);
+    SelectbackgroundSpriteRight.setTexture(SelectbackgroundTexture);
+
+    // Load the background texture
+    if (!SelectbackgroundTextureActive.loadFromFile("Resources/characterSelectBoxActive.png"))
+    {
+        std::cerr << "Error: Could not load background texture." << std::endl;
+        isRunning = false;
+    }
+
+    SelectbackgroundSpriteLeftActive.setTexture(SelectbackgroundTextureActive);
+    SelectbackgroundSpriteRightActive.setTexture(SelectbackgroundTextureActive);
 
     // Resize the background to fit the window
     resizeBackground();
@@ -46,5 +87,15 @@ void SFMLApp::resizeBackground()
 
     backgroundSprite.setScale(scaleX, scaleY);
     backgroundBlurSprite.setScale(scaleX, scaleY);
+
+    SelectbackgroundSpriteLeft.setPosition(screenWidth / 2 - 250, screenHeight / 2 - 250);
+    SelectbackgroundSpriteLeft.setScale(2,2);
+    SelectbackgroundSpriteRight.setPosition(screenWidth / 2 + 50, screenHeight / 2 - 250);
+    SelectbackgroundSpriteRight.setScale(2, 2);
+
+    SelectbackgroundSpriteLeftActive.setPosition(screenWidth / 2 - 250, screenHeight / 2 - 250);
+    SelectbackgroundSpriteLeftActive.setScale(2, 2);
+    SelectbackgroundSpriteRightActive.setPosition(screenWidth / 2 + 50, screenHeight / 2 - 250);
+    SelectbackgroundSpriteRightActive.setScale(2, 2);
 
 }

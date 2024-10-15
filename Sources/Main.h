@@ -5,22 +5,35 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Network.hpp>
+#include "Character.h"
 
 #include <iostream>
 #include <string>
+#include <memory>
+#include <mutex>
 
 extern bool Socket_Enabled;
+extern bool Connected;
+extern bool Host;
 
-void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState);
+extern bool HostCharacterSelection;
+extern bool ClientCharacterSelection;
+
+extern std::mutex characterMutex;
+
+
+void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& SelectbackgroundSpriteLeft, sf::Sprite& SelectbackgroundSpriteRight
+                    ,sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive);
 void renderLevelMenus(sf::RenderWindow& window);
-void renderLevel_One(sf::RenderWindow& window);
+void renderLevel_One(sf::RenderWindow& window, sf::Sprite& tempPlayerASprite, sf::Sprite& tempPlayerBSprite, sf::Sprite& tempPlayerASprite2, sf::Sprite& tempPlayerBSprite2);
 
 void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool& mainMenuState, bool& Socket_Enabled, bool& isRunning);
 void handleLevelSelectEvents(sf::RenderWindow& window);
 void handlePlayingEvents(sf::RenderWindow& window);
 
-void hostGameLogic();
-void connectGameLogic();
+void hostGameLogic(Character& character, Character& character2);
+void connectGameLogic(Character& character, Character& character2);
 
 // Define your application class
 class SFMLApp
@@ -34,10 +47,6 @@ public:
     void resizeBackground();
     
 
-    // Main loop
-    void run();
-
-private:
     // Enumeration for game states
     enum class State
     {
@@ -48,6 +57,11 @@ private:
 
     // Current state of the application
     State currentState;
+
+    // Main loop
+    void run();
+
+private:
 
     // Window object
     sf::RenderWindow window;
@@ -61,6 +75,22 @@ private:
 
     sf::Texture backgroundBlurTexture; 
     sf::Sprite backgroundBlurSprite;
+
+    sf::Texture SelectbackgroundTexture;
+    sf::Sprite SelectbackgroundSpriteLeft;
+    sf::Sprite SelectbackgroundSpriteRight;
+
+    sf::Texture tempPlayerATexture;
+    sf::Sprite tempPlayerASprite;
+    sf::Sprite tempPlayerASprite2;
+
+    sf::Texture tempPlayerBTexture;
+    sf::Sprite tempPlayerBSprite;
+    sf::Sprite tempPlayerBSprite2;
+
+    sf::Texture SelectbackgroundTextureActive;
+    sf::Sprite SelectbackgroundSpriteLeftActive;
+    sf::Sprite SelectbackgroundSpriteRightActive;
 
     sf::Text singlePlayer; 
     sf::Text coOp;       
@@ -89,9 +119,12 @@ private:
     // Loop variables
     bool isRunning;
     bool mainMenuState;
+    
 };
 
 extern int screenWidth;
 extern int screenHeight;
+extern int characterSelect;
+extern int StateChange;
 
 #endif // SFML_APP_H

@@ -1,60 +1,107 @@
 #include "Main.h"
 #include <SFML/Network.hpp>
+#include <thread>
+#include <sstream>
+#include "Character.h"
 
-using namespace std;
 
-// Function to handle socket hosting
-bool hostSocket(sf::TcpListener& listener, unsigned short port)
+// Host game logic
+void hostGameLogic(Character& character, Character& character2)
 {
-    if (listener.listen(port) != sf::Socket::Done)
-    {
-        cout << "Error: Unable to start server on port " << port << endl;
-        return false;
-    }
-    cout << "Server is hosting on port " << port << "..." << endl;
-    return true;
-}
-
-// Function to handle socket connection
-bool connectSocket(sf::TcpSocket& socket, const string& ipAddress, unsigned short port)
-{
-    if (socket.connect(ipAddress, port) != sf::Socket::Done)
-    {
-        cout << "Error: Unable to connect to server at " << ipAddress << " on port " << port << endl;
-        return false;
-    }
-    cout << "Connected to server at " << ipAddress << " on port " << port << "!" << endl;
-    return true;
-}
-
-void hostGameLogic()
-{
-
-    // Host game logic
+    // Create a listener to wait for incoming connections
     sf::TcpListener listener;
-    unsigned short port = 54000;
-    if (hostSocket(listener, port))
+
+    // Bind the listener to a port
+    if (listener.listen(54000) != sf::Socket::Done)
     {
-        // Socket is hosted successfully, waiting for connections...
-        sf::TcpSocket client;
-        if (listener.accept(client) == sf::Socket::Done)
+        std::cout << "Error: Unable to bind the listener to the port\n";
+        return;
+    }
+
+    std::cout << "Host: Waiting for client connection...\n";
+
+    // Accept an incoming connection
+    sf::TcpSocket socket;
+    if (listener.accept(socket) != sf::Socket::Done)
+    {
+        std::cout << "Error: Unable to accept the client connection\n";
+        return;
+    }
+
+    // Set to non-blocking mode
+    socket.setBlocking(false);
+    character.setHost(true);
+    Connected = true;
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    while (true)
+    {
+        character2.sendPosition(socket);
+
+        // Buffer for receiving data
+        char data[100];
+        std::size_t received;
+        sf::Socket::Status status = socket.receive(data, sizeof(data), received);
+
+        if (status == sf::Socket::Done)
         {
-            cout << "Client connected!" << endl;
-            // You can now send/receive data with the client using `client`
+            std::string receivedData(data, received);
+            character.receivePosition(receivedData);
+        }
+        else if (status == sf::Socket::NotReady)
+        {
+            // Socket is not ready, wait a bit before retrying
+        }
+        else
+        {
+            std::cout << "Error: Unable to receive data, status: " << status << "\n";
+            break; // Exit the loop on error
         }
     }
 }
 
-void connectGameLogic()
+// Client game logic
+void connectGameLogic(Character& character, Character& character2)
 {
-    // Connect to server logic
     sf::TcpSocket socket;
-    unsigned short port = 54000;
-    string ipAddress = "127.0.0.1";
 
-    if (connectSocket(socket, ipAddress, port))
+    if (socket.connect("127.0.0.1", 54000) != sf::Socket::Done)
     {
-        cout << "connection succcesfull";
+        std::cout << "Error: Unable to connect to the host\n";
+        return;
     }
-    else { cout << "Error: " << port << " " << ipAddress; }
+
+    // Set to non-blocking mode
+    socket.setBlocking(false);
+    character.setHost(false);
+    Connected = true;
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    while (true)
+    {
+        // Send character position to the host
+        character2.sendPosition(socket);        
+
+        // Buffer for receiving data
+        char data[100];
+        std::size_t received;
+        sf::Socket::Status status = socket.receive(data, sizeof(data), received);
+
+        if (status == sf::Socket::Done)
+        {
+            std::string receivedData(data, received);
+            character.receivePosition(receivedData);
+        }
+        else if (status == sf::Socket::NotReady)
+        {
+            // Socket is not ready, wait a bit before retrying
+        }
+        else
+        {
+            std::cout << "Error: Unable to receive data, status: " << status << "\n";
+            break; // Exit the loop on error
+        }       
+    }
 }

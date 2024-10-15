@@ -34,6 +34,15 @@
     <Filter Include="Source Files\Main">
       <UniqueIdentifier>{68d6e72e-cb91-4eeb-97db-c6d24419dbc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameLogic\Character">
+      <UniqueIdentifier>{007eeb72-f8b2-48d8-a11d-b31d6e733abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\CharacterA_Animation">
+      <UniqueIdentifier>{e4c5fdf5-df71-496a-aed8-2673bd1e8093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\CharacterB_Animation">
+      <UniqueIdentifier>{53927f45-8d10-42b7-8906-01f612c21848}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\EventHandler.cpp">
@@ -46,9 +55,6 @@
       <Filter>Source Files\GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Networking.cpp">
-      <Filter>Source Files\GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\UpdateAnimation.cpp">
       <Filter>Source Files\GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Level_OneEvents.cpp">
@@ -72,9 +78,24 @@
     <ClCompile Include="Sources\Main.cpp">
       <Filter>Source Files\Main</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Character_A_Animation.cpp">
+      <Filter>Source Files\GameLogic\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Character_B_Animation.cpp">
+      <Filter>Source Files\GameLogic\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UpdateAnimation.cpp">
+      <Filter>Source Files\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Character.cpp">
+      <Filter>Source Files\GameLogic\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -88,9 +109,24 @@
     <Image Include="Resources\background_Blur.png">
       <Filter>Resource Files\MainMenu</Filter>
     </Image>
+    <Image Include="Resources\characterSelectBox.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="Resources\characterSelectBoxActive.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="Resources\CharacterA_Temp.png">
+      <Filter>Resource Files\CharacterA_Animation</Filter>
+    </Image>
+    <Image Include="Resources\CharacterB_Temp.png">
+      <Filter>Resource Files\CharacterB_Animation</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Pacifico.ttf">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Font>
+    <Font Include="Resources\KGHAPPY.ttf">
       <Filter>Resource Files\MainMenu</Filter>
     </Font>
   </ItemGroup>
