@@ -28,4 +28,10 @@ void handlePlayingEvents(sf::RenderWindow& window)
         moveMents(*hostCharacter);
     else
         moveMents(*clientCharacter);
+
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+    {
+        mainMenuState = true;
+        Socket_Enabled = false;
+    }
 }

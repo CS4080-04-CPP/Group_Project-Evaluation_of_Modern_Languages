@@ -3,7 +3,7 @@
 
 // Declare shared pointers for character objects
 std::shared_ptr<Character> hostCharacter = std::make_shared<Character>("HostCharacter", sf::Vector2f(0.f, 0.f), 0);
-std::shared_ptr<Character> clientCharacter = std::make_shared<Character>("ClientCharacter", sf::Vector2f(0.f, 0.f), 0);
+std::shared_ptr<Character> clientCharacter = std::make_shared<Character>("ClientCharacter", sf::Vector2f(200.f, 0.f), 0);
 
 
 // Function to handle main menu events
@@ -73,7 +73,7 @@ void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool
                 }
                 else // Client player creates character A
                 {
-                    initializeCharacter(clientCharacter, "Character A", sf::Vector2f(0.f, 0.f), 1); 
+                    initializeCharacter(clientCharacter, "Character A", sf::Vector2f(200.f, 0.f), 1);
                     if (clientCharacter) {
                         std::cout << "Character position after initialization: ("
                             << clientCharacter->getPosition().x << ", "
@@ -95,7 +95,7 @@ void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool
                 }
                 else if (Host) // Host player creates character B
                 {
-                    std::cout << std::endl << "I made it here: 5" << std::endl;
+                    
                     initializeCharacter(hostCharacter, "Character B", sf::Vector2f(0.f, 0.f), 2); 
                     if (hostCharacter) {
                         std::cout << "Character position after initialization: ("
@@ -106,8 +106,8 @@ void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool
                 }
                 else // Client player creates character B
                 {
-                    std::cout << std::endl << "I made it here: 6" << std::endl;
-                    initializeCharacter(clientCharacter, "Character B", sf::Vector2f(0.f, 0.f), 2); 
+                    
+                    initializeCharacter(clientCharacter, "Character B", sf::Vector2f(200.f, 0.f), 2);
                     if (clientCharacter) {
                         std::cout << "Character position after initialization: ("
                             << clientCharacter->getPosition().x << ", "

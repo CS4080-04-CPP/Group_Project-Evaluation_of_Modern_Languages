@@ -11,7 +11,6 @@ bool Host;
 bool HostCharacterSelection;
 bool ClientCharacterSelection;
 
-
 int main()
 {
     // Create an instance of SFMLApp
@@ -19,8 +18,10 @@ int main()
 
     // Assume at first the player is by themselves.
     bool Socket_Enabled = false;
-    Host = true;
     Connected = false;
+
+    //Single player uses host game logic.
+    Host = true;
 
     // Boolean that controls when Level changes occur.
     StateChange = 0;
@@ -61,7 +62,7 @@ void SFMLApp::run()
     {
 
         processEvents();  // Handle input
-        update();         // Update game state
+        update();         // Update Animation state
         render();         // Draw everything to the window
     }
 

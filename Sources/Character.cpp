@@ -4,7 +4,6 @@
 Character::Character(std::string name, sf::Vector2f initialPosition, int characterType)
     : name(std::move(name)), position(initialPosition), health(100), host(false), characterType(characterType)
 {
-    std::cout << "Character created: " << name << " at position: (" << position.x << ", " << position.y << ")\n"; // Add logging
 }
 
 void initializeCharacter(std::shared_ptr<Character>& character, const std::string& name, const sf::Vector2f& position, int id)
@@ -76,10 +75,10 @@ void Character::move(float deltaX, float deltaY)
 // Multiplayer send/receive logic
 void Character::sendPosition(sf::TcpSocket& socket)
 {
-    std::ostringstream positionData;
-    positionData << "POS:" << position.x << "," << position.y; // Include the prefix for clarity
+    std::ostringstream dataStream;
+    dataStream << "POS:" << position.x << "," << position.y << ";TYPE:" << characterType; // Include position and type
 
-    std::string data = positionData.str();
+    std::string data = dataStream.str();
     sendData(socket, data);
 }
 
@@ -120,7 +119,6 @@ void Character::sendData(sf::TcpSocket& socket, const std::string& data)
         totalSent += sent; // Keep track of how much data has been sent
     }
 
-    //std::cout << "Sending data: " << data << std::endl;
 }
 
 std::string Character::receiveData(sf::TcpSocket& socket)
@@ -134,7 +132,6 @@ std::string Character::receiveData(sf::TcpSocket& socket)
     }
 
     std::string receivedData(data, received);
-    //std::cout << "Receiving data: " << receivedData << std::endl;
 
     // Ensure the received data is valid before parsing
     if (!receivedData.empty())
@@ -150,31 +147,45 @@ std::string Character::receiveData(sf::TcpSocket& socket)
 void Character::receivePosition(const std::string& data)
 {
     sf::Vector2f newPosition(0.f, 0.f);
+    int newCharacterType = characterType; // Default to current type if not found in the data
 
-    if (data.substr(0, 4) == "POS:")
+    std::stringstream ss(data);
+    std::string token;
+
+    while (std::getline(ss, token, ';'))
     {
-        std::string positionPart = data.substr(4);
-        std::stringstream ss(positionPart);
-        std::string xStr, yStr;
-
-        if (std::getline(ss, xStr, ',') && std::getline(ss, yStr))
+        if (token.substr(0, 4) == "POS:")
         {
+            std::string positionPart = token.substr(4);
+            std::stringstream posStream(positionPart);
+            std::string xStr, yStr;
+
+            if (std::getline(posStream, xStr, ',') && std::getline(posStream, yStr))
+            {
+                try
+                {
+                    newPosition.x = std::stof(xStr);
+                    newPosition.y = std::stof(yStr);
+                    position = newPosition; // Update character position
+                }
+                catch (const std::exception& e)
+                {
+                    std::cout << "Error parsing position: " << e.what() << "\n";
+                }
+            }
+        }
+        else if (token.substr(0, 5) == "TYPE:")
+        {
+            std::string typePart = token.substr(5);
             try
             {
-                newPosition.x = std::stof(xStr);
-                newPosition.y = std::stof(yStr);
-                //std::cout << "Received position: (" << newPosition.x << ", " << newPosition.y << ")\n";
-                position = newPosition; // Update the character's position
+                newCharacterType = std::stoi(typePart);
+                characterType = newCharacterType; // Update character type
             }
             catch (const std::exception& e)
             {
-                std::cout << "Error parsing position data: " << e.what() << "\n";
+                std::cout << "Error parsing character type: " << e.what() << "\n";
             }
         }
     }
-    else
-    {
-        std::cout << "Invalid data format for position.\n";
-    }
 }
-

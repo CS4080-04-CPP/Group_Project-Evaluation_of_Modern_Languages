@@ -3,12 +3,7 @@
 
 
 void renderLevel_One(sf::RenderWindow& window, sf::Sprite& tempPlayerASprite, sf::Sprite& tempPlayerBSprite, sf::Sprite& tempPlayerASprite2, sf::Sprite& tempPlayerBSprite2)
-{
-        
-        //std::cout << "host: " << hostCharacter->getPosition().x << " " << hostCharacter->getPosition().y << std::endl;
-        //std::cout << "Client: " << clientCharacter->getPosition().x << " " << clientCharacter->getPosition().y << std::endl;
-    
-    std::cout << std::endl << hostCharacter->getCharacterType() << " " << clientCharacter->getCharacterType() << std::endl;
+{       
    
     if (Socket_Enabled == false)
     {        
