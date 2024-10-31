@@ -1,8 +1,9 @@
 #include "Character.h"
+#include "Main.h"
 
 // Constructor
 Character::Character(std::string name, sf::Vector2f initialPosition, int characterType)
-    : name(std::move(name)), position(initialPosition), health(100), host(false), characterType(characterType)
+    : name(std::move(name)), position(initialPosition), health(100), host(true), characterType(characterType)
 {
 }
 
@@ -10,8 +11,8 @@ void initializeCharacter(std::shared_ptr<Character>& character, const std::strin
 {
     character->setName(name);          // Set the character's name
     character->setPosition(position);  // Set the character's position
-    character->setCharacterType(id);   // Set the character's type
-    // Add more initialization logic if needed
+    character->setCharacterType(id);   // Set the character's type   
+    // Add more initialization logic when needed
 }
 
 // Getters and Setters
@@ -63,7 +64,10 @@ bool Character::isHost() const
 void Character::setHost(bool hostStatus)
 {
     this->host = hostStatus;
+
+        
 }
+
 
 // Movement logic
 void Character::move(float deltaX, float deltaY)
@@ -117,8 +121,22 @@ void Character::sendData(sf::TcpSocket& socket, const std::string& data)
             return;
         }
         totalSent += sent; // Keep track of how much data has been sent
+        
     }
 
+}
+
+// Set velocity method
+void Character::setVelocity(float vx, float vy)
+{
+    this->velocityX = vx;
+    this->velocityY = vy;
+}
+
+// Get velocity method
+sf::Vector2f Character::getVelocity() const
+{
+    return sf::Vector2f(velocityX, velocityY);
 }
 
 std::string Character::receiveData(sf::TcpSocket& socket)
@@ -173,6 +191,7 @@ void Character::receivePosition(const std::string& data)
                     std::cout << "Error parsing position: " << e.what() << "\n";
                 }
             }
+
         }
         else if (token.substr(0, 5) == "TYPE:")
         {

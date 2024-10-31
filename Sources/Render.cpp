@@ -26,7 +26,8 @@ void SFMLApp::render()
     {
         currentState = State::PLAYING;
     }
-    else {
+    else 
+    {
         currentState = State::MAIN_MENU;
     }
 
@@ -55,8 +56,8 @@ void SFMLApp::renderLevelMenu()
     renderLevelMenus(window);
 }
 
-// Render the game (placeholder for gameplay rendering)
+// Render the game
 void SFMLApp::renderGame()
 {
-    renderLevel_One(window, tempPlayerASprite, tempPlayerBSprite, tempPlayerASprite2, tempPlayerBSprite2);
+    renderLevel_One(window);
 }

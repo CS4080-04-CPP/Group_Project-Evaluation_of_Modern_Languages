@@ -11,6 +11,13 @@ bool Host;
 bool HostCharacterSelection;
 bool ClientCharacterSelection;
 
+// Declare shared pointers for character objects
+std::shared_ptr<Character> hostCharacter = std::make_shared<Character>("HostCharacter", sf::Vector2f(0.f, 0.f), 0);
+std::shared_ptr<Character> clientCharacter = std::make_shared<Character>("ClientCharacter", sf::Vector2f(0.f, 0.f), 0);
+
+//Initilize an InputManager
+InputManager inputManager;
+
 int main()
 {
     // Create an instance of SFMLApp
@@ -26,6 +33,7 @@ int main()
     // Boolean that controls when Level changes occur.
     StateChange = 0;
 
+
     // Run the application
     app.run();
 
@@ -38,7 +46,7 @@ SFMLApp::SFMLApp()
 {
 
     initWindow();
-    loadResources();
+    loadResources(window);
 
     isRunning = true;
     currentState = State::MAIN_MENU;    // Begins the program at the Main Menu State.
@@ -58,12 +66,21 @@ void SFMLApp::initWindow()
 // Main game loop
 void SFMLApp::run()
 {
+
+    sf::Clock clock;
+
+
     while (isRunning && window.isOpen())
     {
 
-        processEvents();  // Handle input
-        update();         // Update Animation state
-        render();         // Draw everything to the window
+        sf::Time deltaTime = clock.restart();
+
+        processEvents();     // Handle input
+        render();            // Draw everything to the window
+        update(window);      // Update states
+
+        sf::sleep(sf::seconds(1.f / 60.f) - deltaTime);
+
     }
 
 }

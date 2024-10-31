@@ -1,12 +1,39 @@
 #include "Main.h"
 
-void SFMLApp::loadResources()
+sf::Texture cursorTexture;
+sf::Sprite cursorSprite;
+
+sf::Texture backgroundTexture;
+sf::Sprite backgroundSprite;
+
+sf::Texture backgroundBlurTexture;
+sf::Sprite backgroundBlurSprite;
+
+sf::Texture SelectbackgroundTexture;
+sf::Sprite SelectbackgroundSpriteLeft;
+sf::Sprite SelectbackgroundSpriteRight;
+
+sf::Texture SelectbackgroundTextureActive;
+sf::Sprite SelectbackgroundSpriteLeftActive;
+sf::Sprite SelectbackgroundSpriteRightActive;
+
+sf::Sprite tempPlayerASprite;
+sf::Sprite tempPlayerBSprite;
+sf::Texture tempPlayerATexture;
+sf::Sprite tempPlayerASprite2;
+sf::Texture tempPlayerBTexture;
+sf::Sprite tempPlayerBSprite2;
+
+sf::Text singlePlayer;
+sf::Text coOp;
+sf::Text Exitw;
+
+void loadResources(sf::RenderWindow& window)
 {
     // Load the cursor texture
     if (!cursorTexture.loadFromFile("Resources/cursor.png"))
     {
         std::cerr << "Error: Could not load cursor texture." << std::endl;
-        isRunning = false;
     }
 
     // Types: Demonstrates object-oriented manipulation of types like sf::Sprite and sf::Texture.
@@ -17,7 +44,6 @@ void SFMLApp::loadResources()
     if (!backgroundTexture.loadFromFile("Resources/background.png"))
     {
         std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
     }
 
     backgroundSprite.setTexture(backgroundTexture);
@@ -26,7 +52,6 @@ void SFMLApp::loadResources()
     if (!tempPlayerATexture.loadFromFile("Resources/CharacterA_Temp.png"))
     {
         std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
     }
 
     tempPlayerASprite.setTexture(tempPlayerATexture);
@@ -36,7 +61,6 @@ void SFMLApp::loadResources()
     if (!tempPlayerBTexture.loadFromFile("Resources/CharacterB_Temp.png"))
     {
         std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
     }
 
     tempPlayerBSprite.setTexture(tempPlayerBTexture);
@@ -47,7 +71,6 @@ void SFMLApp::loadResources()
     if (!backgroundBlurTexture.loadFromFile("Resources/background_blur.png"))
     {
         std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
     }
 
     backgroundBlurSprite.setTexture(backgroundBlurTexture);
@@ -56,7 +79,6 @@ void SFMLApp::loadResources()
     if (!SelectbackgroundTexture.loadFromFile("Resources/characterSelectBox.png"))
     {
         std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
     }
 
     SelectbackgroundSpriteLeft.setTexture(SelectbackgroundTexture);
@@ -66,17 +88,16 @@ void SFMLApp::loadResources()
     if (!SelectbackgroundTextureActive.loadFromFile("Resources/characterSelectBoxActive.png"))
     {
         std::cerr << "Error: Could not load background texture." << std::endl;
-        isRunning = false;
     }
 
     SelectbackgroundSpriteLeftActive.setTexture(SelectbackgroundTextureActive);
     SelectbackgroundSpriteRightActive.setTexture(SelectbackgroundTextureActive);
 
     // Resize the background to fit the window
-    resizeBackground();
+    resizeBackground(window);
 }
 
-void SFMLApp::resizeBackground()
+void resizeBackground(sf::RenderWindow& window)
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = backgroundTexture.getSize();

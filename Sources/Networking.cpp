@@ -30,13 +30,16 @@ void hostGameLogic(Character& character, Character& character2)
 
     // Set to non-blocking mode
     socket.setBlocking(false);
-    character.setHost(true);
+    character2.setHost(true);
+    character.setHost(false);
     Connected = true;
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
     while (true)
     {
+       
+
         character2.sendPosition(socket);
 
         // Buffer for receiving data
@@ -56,7 +59,7 @@ void hostGameLogic(Character& character, Character& character2)
         else
         {
             std::cout << "Error: Unable to receive data, status: " << status << "\n";
-            break; // Exit the loop on error
+            break; // Exitw the loop on error
         }
     }
 }
@@ -75,14 +78,17 @@ void connectGameLogic(Character& character, Character& character2)
     // Set to non-blocking mode
     socket.setBlocking(false);
     character.setHost(false);
+    character2.setHost(true);
     Connected = true;
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
     while (true)
     {
+        
+
         // Send character position to the host
-        character2.sendPosition(socket);        
+        character2.sendPosition(socket);
 
         // Buffer for receiving data
         char data[100];
@@ -101,7 +107,7 @@ void connectGameLogic(Character& character, Character& character2)
         else
         {
             std::cout << "Error: Unable to receive data, status: " << status << "\n";
-            break; // Exit the loop on error
-        }       
+            break; // Exitw the loop on error
+        }
     }
 }

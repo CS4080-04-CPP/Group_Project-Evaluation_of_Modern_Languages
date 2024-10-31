@@ -7,45 +7,20 @@
 #include <SFML/System.hpp>
 #include <SFML/Network.hpp>
 #include "Character.h"
+#include "InputManager.h"
 
 #include <iostream>
 #include <string>
 #include <memory>
 #include <mutex>
 
-extern bool Socket_Enabled;
-extern bool Connected;
-extern bool Host;
-
-extern bool HostCharacterSelection;
-extern bool ClientCharacterSelection;
-
-extern std::mutex characterMutex;
-
-
-void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& SelectbackgroundSpriteLeft, sf::Sprite& SelectbackgroundSpriteRight
-                    ,sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive);
-void renderLevelMenus(sf::RenderWindow& window);
-void renderLevel_One(sf::RenderWindow& window, sf::Sprite& tempPlayerASprite, sf::Sprite& tempPlayerBSprite, sf::Sprite& tempPlayerASprite2, sf::Sprite& tempPlayerBSprite2);
-
-void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool& mainMenuState, bool& Socket_Enabled, bool& isRunning);
-void handleLevelSelectEvents(sf::RenderWindow& window);
-void handlePlayingEvents(sf::RenderWindow& window);
-
-void hostGameLogic(Character& character, Character& character2);
-void connectGameLogic(Character& character, Character& character2);
-
-// Define your application class
+// Define application class
 class SFMLApp
 {
 public:
     // Constructor and Destructor
     SFMLApp();
     ~SFMLApp();
-
-    void loadResources();
-    void resizeBackground();
-    
 
     // Enumeration for game states
     enum class State
@@ -64,37 +39,7 @@ public:
 private:
 
     // Window object
-    sf::RenderWindow window;
-
-    // Texture and Sprites
-    sf::Texture cursorTexture;
-    sf::Sprite cursorSprite;
-
-    sf::Texture backgroundTexture;
-    sf::Sprite backgroundSprite;
-
-    sf::Texture backgroundBlurTexture; 
-    sf::Sprite backgroundBlurSprite;
-
-    sf::Texture SelectbackgroundTexture;
-    sf::Sprite SelectbackgroundSpriteLeft;
-    sf::Sprite SelectbackgroundSpriteRight;
-
-    sf::Texture tempPlayerATexture;
-    sf::Sprite tempPlayerASprite;
-    sf::Sprite tempPlayerASprite2;
-
-    sf::Texture tempPlayerBTexture;
-    sf::Sprite tempPlayerBSprite;
-    sf::Sprite tempPlayerBSprite2;
-
-    sf::Texture SelectbackgroundTextureActive;
-    sf::Sprite SelectbackgroundSpriteLeftActive;
-    sf::Sprite SelectbackgroundSpriteRightActive;
-
-    sf::Text singlePlayer; 
-    sf::Text coOp;       
-    sf::Text exit;       
+    sf::RenderWindow window;    
 
     // Initialization function
     void initWindow();
@@ -103,13 +48,10 @@ private:
     void processEvents();
 
     // Update logic
-    void update();
+    void update(sf::Window& window);
 
     // Rendering function
     void render();
-
-    // Handle events based on the current state
-    void handleStateEvents(const sf::Event& event);
 
     // Rendering methods for different states
     void renderMainMenu();
@@ -122,9 +64,63 @@ private:
     
 };
 
+extern bool Socket_Enabled;
+extern bool Connected;
+extern bool Host;
+extern bool HostCharacterSelection;
+extern bool ClientCharacterSelection;
+
 extern int screenWidth;
 extern int screenHeight;
-extern int characterSelect;
 extern int StateChange;
+
+extern InputManager inputManager;
+extern std::mutex characterMutex;
+
+void  handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool& mainMenuState, bool& Socket_Enabled, bool& isRunning);
+void  handleLevelSelectEvents(sf::RenderWindow& window, const sf::Event& event);
+void  handlePlayingEvents(sf::RenderWindow& window, const sf::Event& event);
+
+void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& SelectbackgroundSpriteLeft, sf::Sprite& SelectbackgroundSpriteRight
+    , sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive);
+void renderLevelMenus(sf::RenderWindow& window);
+void renderLevel_One(sf::RenderWindow& window);
+
+void loadResources(sf::RenderWindow& window);
+void resizeBackground(sf::RenderWindow& window);
+void moveMents();
+
+void hostGameLogic(Character& character, Character& character2);
+void connectGameLogic(Character& character, Character& character2);
+
+// Texture and Sprites
+extern sf::Texture cursorTexture;
+extern sf::Sprite cursorSprite;
+
+extern sf::Texture backgroundTexture;
+extern sf::Sprite backgroundSprite;
+
+extern sf::Texture backgroundBlurTexture;
+extern sf::Sprite backgroundBlurSprite;
+
+extern sf::Texture SelectbackgroundTexture;
+extern sf::Sprite SelectbackgroundSpriteLeft;
+extern sf::Sprite SelectbackgroundSpriteRight;
+
+extern sf::Texture SelectbackgroundTextureActive;
+extern sf::Sprite SelectbackgroundSpriteLeftActive;
+extern sf::Sprite SelectbackgroundSpriteRightActive;
+
+
+extern sf::Sprite tempPlayerASprite;
+extern sf::Sprite tempPlayerBSprite;
+extern sf::Texture tempPlayerATexture;
+extern sf::Sprite tempPlayerASprite2;
+extern sf::Texture tempPlayerBTexture;
+extern sf::Sprite tempPlayerBSprite2;
+
+extern sf::Text singlePlayer;
+extern sf::Text coOp;
+extern sf::Text Exitw;
 
 #endif // SFML_APP_H

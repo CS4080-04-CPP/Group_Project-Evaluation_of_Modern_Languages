@@ -12,6 +12,8 @@ class Character
 private:
     std::string name;
     sf::Vector2f position;
+    float velocityX = 0;
+    float velocityY = 0;
     int health;
     bool host;
     int characterType;
@@ -30,6 +32,9 @@ public:
     sf::Vector2f getPosition() const;
     void setPosition(const sf::Vector2f& position);
 
+    void setVelocity(float vx, float vy);
+    sf::Vector2f getVelocity() const;
+
     int getHealth() const;
     void setHealth(int health);
 
@@ -42,7 +47,6 @@ public:
     // Multiplayer send/receive logic
     void sendPosition(sf::TcpSocket& socket);
     void receivePosition(const std::string& data);
-
 
     // Special actions
     void performSpecialAction();
