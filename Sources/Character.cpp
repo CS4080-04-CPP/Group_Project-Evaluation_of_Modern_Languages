@@ -36,9 +36,24 @@ void Character::setName(const std::string& name)
     this->name = name;
 }
 
+sf::Sprite& Character::getSprite()
+{
+    return sprite;
+}
+
 sf::Vector2f Character::getPosition() const
 {
     return position;
+}
+
+float Character::getPositionX() const
+{
+    return position.x;
+}
+
+float Character::getPositionY() const
+{
+    return position.y;
 }
 
 void Character::setPosition(const sf::Vector2f& position)

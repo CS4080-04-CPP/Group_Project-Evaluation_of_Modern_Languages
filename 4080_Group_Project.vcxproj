@@ -41,6 +41,7 @@
     <ClInclude Include="Sources\Character.h" />
     <ClInclude Include="Sources\InputManager.h" />
     <ClInclude Include="Sources\Main.h" />
+    <ClInclude Include="Sources\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\background.png" />
@@ -50,6 +51,7 @@
     <Image Include="Resources\characterSelectBox.png" />
     <Image Include="Resources\characterSelectBoxActive.png" />
     <Image Include="Resources\cursor.png" />
+    <Image Include="Resources\Terrain.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\KGHAPPY.ttf" />

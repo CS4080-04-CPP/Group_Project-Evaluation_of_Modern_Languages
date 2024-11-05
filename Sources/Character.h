@@ -12,6 +12,7 @@ class Character
 private:
     std::string name;
     sf::Vector2f position;
+    sf::Sprite sprite;
     float velocityX = 0;
     float velocityY = 0;
     int health;
@@ -29,7 +30,11 @@ public:
     std::string getName() const;
     void setName(const std::string& name);
 
+    sf::Sprite& getSprite();
+
     sf::Vector2f getPosition() const;
+    float getPositionX() const;   
+    float getPositionY() const;
     void setPosition(const sf::Vector2f& position);
 
     void setVelocity(float vx, float vy);

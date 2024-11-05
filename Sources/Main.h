@@ -8,6 +8,7 @@
 #include <SFML/Network.hpp>
 #include "Character.h"
 #include "InputManager.h"
+#include "Object.h" 
 
 #include <iostream>
 #include <string>
@@ -69,6 +70,7 @@ extern bool Connected;
 extern bool Host;
 extern bool HostCharacterSelection;
 extern bool ClientCharacterSelection;
+extern bool isGrounded;
 
 extern int screenWidth;
 extern int screenHeight;
@@ -85,15 +87,19 @@ void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& 
     , sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive);
 void renderLevelMenus(sf::RenderWindow& window);
 void renderLevel_One(sf::RenderWindow& window);
+void initializeFloor();
 
 void loadResources(sf::RenderWindow& window);
 void resizeBackground(sf::RenderWindow& window);
-void moveMents();
+void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlayerASprite);
 
 void hostGameLogic(Character& character, Character& character2);
 void connectGameLogic(Character& character, Character& character2);
 
-// Texture and Sprites
+// Textures and Sprites
+
+extern Object Floor;
+
 extern sf::Texture cursorTexture;
 extern sf::Sprite cursorSprite;
 

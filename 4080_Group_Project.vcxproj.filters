@@ -122,6 +122,9 @@
     <ClInclude Include="Sources\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\background.png">
@@ -144,6 +147,9 @@
     </Image>
     <Image Include="Resources\CharacterB_Temp.png">
       <Filter>Resource Files\CharacterB_Animation</Filter>
+    </Image>
+    <Image Include="Resources\Terrain.png">
+      <Filter>Resource Files\LevelOne</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

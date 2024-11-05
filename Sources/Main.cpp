@@ -10,6 +10,7 @@ bool Connected;
 bool Host;
 bool HostCharacterSelection;
 bool ClientCharacterSelection;
+bool isGrounded; 
 
 // Declare shared pointers for character objects
 std::shared_ptr<Character> hostCharacter = std::make_shared<Character>("HostCharacter", sf::Vector2f(0.f, 0.f), 0);
@@ -48,6 +49,7 @@ SFMLApp::SFMLApp()
     initWindow();
     loadResources(window);
 
+    isGrounded = false; 
     isRunning = true;
     currentState = State::MAIN_MENU;    // Begins the program at the Main Menu State.
     mainMenuState = true;               // Determines if the background is blurred.
