@@ -12,11 +12,11 @@ void InputManager::processInput(sf::Window& window)
     }
 
     // Handle A key for moving left
-    moveLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
+    moveLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 
     // Handle D key for moving right
-    moveRight = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
+    moveRight = sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 
     // Handle Space key for jumping
-    jump = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+    jump = sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W);
 }
