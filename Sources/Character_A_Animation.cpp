@@ -1,4 +1,8 @@
 #include "Main.h"
 
-
-// TODO
+//Input Manager
+//isMoveLeft
+//isMoveRight
+//isJump()
+// 
+//if (inputManager.isJump()) {}
