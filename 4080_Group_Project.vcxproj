@@ -57,6 +57,9 @@
     <Font Include="Resources\KGHAPPY.ttf" />
     <Font Include="Resources\Pacifico.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\Downloads\click (1).mp3" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
