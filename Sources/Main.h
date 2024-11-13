@@ -51,19 +51,64 @@ private:
     // Update logic
     void update(sf::Window& window);
 
-    // Rendering function
+    // Rendering functions
     void render();
+    void loadResources();
 
     // Rendering methods for different states
     void renderMainMenu();
     void renderLevelMenu();
     void renderGame();
 
+    void  handleMainMenuEvents(sf::Event event);
+    void  handleLevelSelectEvents(sf::Event event);
+    void  handlePlayingEvents(sf::Event event);
+
+    // Sprites and Textures
+    sf::Texture cursorTexture;
+    sf::Sprite cursorSprite;
+
+    sf::Texture backgroundTexture;
+    sf::Sprite backgroundSprite;
+
+    sf::Texture backgroundBlurTexture;
+    sf::Sprite backgroundBlurSprite;
+
+    sf::Texture SelectbackgroundTexture;
+    sf::Sprite SelectbackgroundSpriteLeft;
+    sf::Sprite SelectbackgroundSpriteRight;
+
+    sf::Texture SelectbackgroundTextureActive;
+    sf::Sprite SelectbackgroundSpriteLeftActive;
+    sf::Sprite SelectbackgroundSpriteRightActive;
+
+
+    sf::Sprite tempPlayerASprite;
+    sf::Sprite tempPlayerBSprite;
+    sf::Texture tempPlayerATexture;
+    sf::Sprite tempPlayerASprite2;
+    sf::Texture tempPlayerBTexture;
+    sf::Sprite tempPlayerBSprite2;
+
+    sf::Text singlePlayer;
+    sf::Text coOp;
+    sf::Text Exitw;
+
+
     // Loop variables
     bool isRunning;
     bool mainMenuState;
     
 };
+
+// Objects and Backgrounds
+extern Object Floor;
+extern Object Floor2;
+extern Object Floor3;
+extern Object Sky;
+extern Object cloud1;
+extern Object Background1;
+
 
 extern bool Socket_Enabled;
 extern bool Connected;
@@ -79,60 +124,9 @@ extern int StateChange;
 extern InputManager inputManager;
 extern std::mutex characterMutex;
 
-void  handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool& mainMenuState, bool& Socket_Enabled, bool& isRunning);
-void  handleLevelSelectEvents(sf::RenderWindow& window, const sf::Event& event);
-void  handlePlayingEvents(sf::RenderWindow& window, const sf::Event& event);
-
-void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& SelectbackgroundSpriteLeft, sf::Sprite& SelectbackgroundSpriteRight
-    , sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive);
-void renderLevelMenus(sf::RenderWindow& window);
-void renderLevel_One(sf::RenderWindow& window);
-
-void loadResources(sf::RenderWindow& window);
-void resizeBackground(sf::RenderWindow& window);
 void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlayerASprite);
 
 void hostGameLogic(Character& character, Character& character2);
 void connectGameLogic(Character& character, Character& character2);
-
-// Objects and Backgrounds
-
-extern Object Floor;
-extern Object Floor2;
-extern Object Floor3;
-extern Object Sky;
-extern Object cloud1;
-extern Object Background1;
-
-// Textures and Sprites
-
-extern sf::Texture cursorTexture;
-extern sf::Sprite cursorSprite;
-
-extern sf::Texture backgroundTexture;
-extern sf::Sprite backgroundSprite;
-
-extern sf::Texture backgroundBlurTexture;
-extern sf::Sprite backgroundBlurSprite;
-
-extern sf::Texture SelectbackgroundTexture;
-extern sf::Sprite SelectbackgroundSpriteLeft;
-extern sf::Sprite SelectbackgroundSpriteRight;
-
-extern sf::Texture SelectbackgroundTextureActive;
-extern sf::Sprite SelectbackgroundSpriteLeftActive;
-extern sf::Sprite SelectbackgroundSpriteRightActive;
-
-
-extern sf::Sprite tempPlayerASprite;
-extern sf::Sprite tempPlayerBSprite;
-extern sf::Texture tempPlayerATexture;
-extern sf::Sprite tempPlayerASprite2;
-extern sf::Texture tempPlayerBTexture;
-extern sf::Sprite tempPlayerBSprite2;
-
-extern sf::Text singlePlayer;
-extern sf::Text coOp;
-extern sf::Text Exitw;
 
 #endif // SFML_APP_H

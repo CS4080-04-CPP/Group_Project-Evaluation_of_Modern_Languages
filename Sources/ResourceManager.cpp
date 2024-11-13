@@ -7,35 +7,7 @@ Object Sky("Resources/Sky.jpg");
 Object cloud1("Resources/cloud1.png");
 Object Background1("Resources/BackgroundGround.png");
 
-sf::Texture cursorTexture;
-sf::Sprite cursorSprite;
-
-sf::Texture backgroundTexture;
-sf::Sprite backgroundSprite;
-
-sf::Texture backgroundBlurTexture;
-sf::Sprite backgroundBlurSprite;
-
-sf::Texture SelectbackgroundTexture;
-sf::Sprite SelectbackgroundSpriteLeft;
-sf::Sprite SelectbackgroundSpriteRight;
-
-sf::Texture SelectbackgroundTextureActive;
-sf::Sprite SelectbackgroundSpriteLeftActive;
-sf::Sprite SelectbackgroundSpriteRightActive;
-
-sf::Sprite tempPlayerASprite;
-sf::Sprite tempPlayerBSprite;
-sf::Texture tempPlayerATexture;
-sf::Sprite tempPlayerASprite2;
-sf::Texture tempPlayerBTexture;
-sf::Sprite tempPlayerBSprite2;
-
-sf::Text singlePlayer;
-sf::Text coOp;
-sf::Text Exitw;
-
-void loadResources(sf::RenderWindow& window)
+void SFMLApp::loadResources()
 {
     // Load the cursor texture
     if (!cursorTexture.loadFromFile("Resources/cursor.png"))
@@ -100,14 +72,7 @@ void loadResources(sf::RenderWindow& window)
     SelectbackgroundSpriteLeftActive.setTexture(SelectbackgroundTextureActive);
     SelectbackgroundSpriteRightActive.setTexture(SelectbackgroundTextureActive);
 
-
-
-    // Resize the background to fit the window
-    resizeBackground(window);
-}
-
-void resizeBackground(sf::RenderWindow& window)
-{
+  
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = backgroundTexture.getSize();
 

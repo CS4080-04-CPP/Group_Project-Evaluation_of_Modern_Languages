@@ -40,25 +40,3 @@ void SFMLApp::render()
 
     window.display();
 }
-
-
-// Render the main menu
-void SFMLApp::renderMainMenu()
-{
-    window.draw(mainMenuState ? backgroundSprite : backgroundBlurSprite);
-    
-    renderMainMenus(window, mainMenuState, SelectbackgroundSpriteLeft, SelectbackgroundSpriteRight, SelectbackgroundSpriteLeftActive, SelectbackgroundSpriteRightActive);
-}
-
-// Render the level select screen
-void SFMLApp::renderLevelMenu()
-{
-    window.draw(backgroundBlurSprite);
-    renderLevelMenus(window);
-}
-
-// Render the game
-void SFMLApp::renderGame()
-{
-    renderLevel_One(window);
-}

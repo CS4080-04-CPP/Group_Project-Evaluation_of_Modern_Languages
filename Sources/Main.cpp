@@ -47,7 +47,7 @@ SFMLApp::SFMLApp()
 {
 
     initWindow();
-    loadResources(window);
+    loadResources();
 
     isGrounded = false; 
     isRunning = true;

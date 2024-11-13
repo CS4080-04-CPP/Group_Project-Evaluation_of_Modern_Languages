@@ -2,9 +2,11 @@
 
 bool Socket_enabled;
 
-void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& SelectbackgroundSpriteLeft, sf::Sprite& SelectbackgroundSpriteRight
-                    ,sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive)
+// Render the main menu
+void SFMLApp::renderMainMenu()
 {
+    window.draw(mainMenuState ? backgroundSprite : backgroundBlurSprite);
+
     // Load the font
     sf::Font font;
     if (!font.loadFromFile("Resources/Pacifico.ttf")) // Load a font
@@ -105,7 +107,8 @@ void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& 
             {
                 window.draw(SelectbackgroundSpriteLeft);
                 window.draw(SelectbackgroundSpriteRightActive);
-            } else 
+            } 
+            else 
             {
                 window.draw(SelectbackgroundSpriteLeft);
                 window.draw(SelectbackgroundSpriteRight);

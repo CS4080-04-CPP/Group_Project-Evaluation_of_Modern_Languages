@@ -1,7 +1,9 @@
 #include "Main.h"
 
-void renderLevelMenus(sf::RenderWindow& window)
+void SFMLApp::renderLevelMenu()
 {
+
+	window.draw(backgroundBlurSprite);
 
 	sf::Font font;
 	font.loadFromFile("Resources/Pacifico.ttf"); // Load a font

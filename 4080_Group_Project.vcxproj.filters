@@ -160,6 +160,18 @@
     <Image Include="..\..\..\..\Downloads\right.png">
       <Filter>Resource Files\CharacterA_Animation</Filter>
     </Image>
+    <Image Include="Resources\Cloud1.png">
+      <Filter>Resource Files\LevelOne</Filter>
+    </Image>
+    <Image Include="Resources\BackgroundGround.png">
+      <Filter>Resource Files\LevelOne</Filter>
+    </Image>
+    <Image Include="Resources\Sky.jpg">
+      <Filter>Resource Files\LevelOne</Filter>
+    </Image>
+    <Image Include="Resources\TempTerrain.png">
+      <Filter>Resource Files\LevelOne</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Pacifico.ttf">

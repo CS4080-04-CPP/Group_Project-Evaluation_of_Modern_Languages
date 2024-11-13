@@ -4,7 +4,7 @@ std::vector<Object> collidableObjects;
 static bool isInitialized = false;
 int var = -400;
 
-void renderLevel_One(sf::RenderWindow& window)
+void SFMLApp::renderGame()
 {
 
     
@@ -13,7 +13,6 @@ void renderLevel_One(sf::RenderWindow& window)
     {
         Floor.setPosition(0, 1025);
         Floor2.setPosition(450, 800);
-        Floor3.setPosition(300, 850);
 
         Sky.setPosition(0,0);
 
@@ -39,12 +38,9 @@ void renderLevel_One(sf::RenderWindow& window)
 
     Floor.draw(window);
     Floor2.draw(window);
-    Floor3.draw(window);
-    
 
     collidableObjects.push_back(Floor);
     collidableObjects.push_back(Floor2);
-    collidableObjects.push_back(Floor3);
 
     if (Socket_Enabled == false)
     {

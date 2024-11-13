@@ -21,17 +21,17 @@ void SFMLApp::processEvents()
 
         case State::MAIN_MENU:
 
-            handleMainMenuEvents(window, event, mainMenuState, Socket_Enabled, isRunning);
+            handleMainMenuEvents(event);
 
             break;
         case State::LEVEL_SELECT:
 
-            handleLevelSelectEvents(window, event);
+            handleLevelSelectEvents(event);
 
             break;
         case State::PLAYING:
 
-            handlePlayingEvents(window, event);
+            handlePlayingEvents(event);
 
             break;
         }
