@@ -23,7 +23,7 @@ void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& 
     // Create text objects
     sf::Text singlePlayer("Single Player", font, 40);
     sf::Text coOp("Co-Op", font, 40);
-    sf::Text Exitw("Exitw", font, 40);
+    sf::Text Exitw("Exit", font, 40);
     sf::Text host("Host", font, 60);
     sf::Text connect("Connect", font, 60);
     sf::Text playerSelect("Character Select", font2, 60);

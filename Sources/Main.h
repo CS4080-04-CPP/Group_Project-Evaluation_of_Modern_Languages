@@ -87,7 +87,6 @@ void renderMainMenus(sf::RenderWindow& window, bool& mainMenuState, sf::Sprite& 
     , sf::Sprite& SelectbackgroundSpriteLeftActive, sf::Sprite& SelectbackgroundSpriteRightActive);
 void renderLevelMenus(sf::RenderWindow& window);
 void renderLevel_One(sf::RenderWindow& window);
-void initializeFloor();
 
 void loadResources(sf::RenderWindow& window);
 void resizeBackground(sf::RenderWindow& window);
@@ -96,9 +95,16 @@ void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlay
 void hostGameLogic(Character& character, Character& character2);
 void connectGameLogic(Character& character, Character& character2);
 
-// Textures and Sprites
+// Objects and Backgrounds
 
 extern Object Floor;
+extern Object Floor2;
+extern Object Floor3;
+extern Object Sky;
+extern Object cloud1;
+extern Object Background1;
+
+// Textures and Sprites
 
 extern sf::Texture cursorTexture;
 extern sf::Sprite cursorSprite;

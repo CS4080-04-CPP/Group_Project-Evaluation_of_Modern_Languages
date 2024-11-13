@@ -1,6 +1,11 @@
 #include "Main.h"
 
-Object Floor("Resources/Terrain.png");
+Object Floor("Resources/TempTerrain.png");
+Object Floor2("Resources/Terrain.png");
+Object Floor3("Resources/Terrain.png");
+Object Sky("Resources/Sky.jpg");
+Object cloud1("Resources/cloud1.png");
+Object Background1("Resources/BackgroundGround.png");
 
 sf::Texture cursorTexture;
 sf::Sprite cursorSprite;
@@ -123,13 +128,4 @@ void resizeBackground(sf::RenderWindow& window)
     SelectbackgroundSpriteRightActive.setPosition(screenWidth / 2 + 50, screenHeight / 2 - 250);
     SelectbackgroundSpriteRightActive.setScale(2, 2);
 
-}
-
-// Initialize Floor properties only once
-void initializeFloor()
-{
-
-    Floor.setPosition(0, 1000);
-    Floor.toggleTileMode();
-    Floor.setTileRepeats(40, 1);
 }

@@ -2,12 +2,31 @@
 
 void renderLevelMenus(sf::RenderWindow& window)
 {
-	// Render level selection options here
-	// Example: Draw "Press 1 for Level 1", "Press 2 for Level 2"
+
 	sf::Font font;
 	font.loadFromFile("Resources/Pacifico.ttf"); // Load a font
-	sf::Text text("Select Level: Press 1 for Level 1, Press 2 for Level 2", font, 30);
-	text.setFillColor(sf::Color::White);
-	text.setPosition(screenWidth / 2 - 300, screenHeight / 2); // Center text
+
+	sf::Text text("Resume", font, 60);
+	text.setFillColor(sf::Color::Black);
+	text.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 320); // Center text
+
+	sf::Text text2("Exit", font, 60);
+	text2.setFillColor(sf::Color::Black);
+	text2.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 250); // Center text
+
+	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+	// Change color if mouse is hovering over the text
+	if (text.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
+	{
+		text.setFillColor(sf::Color::Red); // Change to red
+	}
+
+	if (text2.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
+	{
+		text2.setFillColor(sf::Color::Red); // Change to red
+	}
+	
 	window.draw(text);
+	window.draw(text2);
 }

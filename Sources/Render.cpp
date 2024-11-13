@@ -53,6 +53,7 @@ void SFMLApp::renderMainMenu()
 // Render the level select screen
 void SFMLApp::renderLevelMenu()
 {
+    window.draw(backgroundBlurSprite);
     renderLevelMenus(window);
 }
 

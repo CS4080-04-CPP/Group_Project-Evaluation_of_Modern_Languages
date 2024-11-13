@@ -26,7 +26,7 @@ void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool
 
 
 
-        std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl; // Debug print
+        //std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl; // Debug print
 
 
         if (mainMenuState)
@@ -74,6 +74,7 @@ void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool
                     StateChange = 2;
 
                 }
+                mainMenuState = true;
             }
             // Character B selection logic
             else if (mousePos.x >= 1019 && mousePos.x <= 1257 && mousePos.y >= 303 && mousePos.y <= 577)
@@ -100,6 +101,7 @@ void handleMainMenuEvents(sf::RenderWindow& window, const sf::Event& event, bool
                     StateChange = 2;
 
                 }
+                mainMenuState = true;
             }
         }
     }
