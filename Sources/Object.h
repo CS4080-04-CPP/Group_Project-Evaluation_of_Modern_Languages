@@ -4,6 +4,7 @@
 class Object
 {
 public:
+
     Object(const std::string& imagePath)
         : horizontalRepeats(1), verticalRepeats(1), isTileMode(false)
     {

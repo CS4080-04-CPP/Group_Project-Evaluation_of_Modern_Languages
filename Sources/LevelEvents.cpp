@@ -2,7 +2,7 @@
 
 
 // Handle PLAYING state events
-void SFMLApp::handlePlayingEvents(sf::Event event)
+void SFMLApp::handleLevelEvents(sf::Event event)
 {   
 
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)

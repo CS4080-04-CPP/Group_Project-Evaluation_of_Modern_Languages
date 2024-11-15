@@ -14,7 +14,10 @@ void SFMLApp::update(sf::Window& window)
     case State::LEVEL_SELECT:
         
         break;
-    case State::PLAYING:
+    case State::LEVEL_ONE:
+        inputManager.processInput(window);
+
+    case State::LEVEL_TWO:
         inputManager.processInput(window);
         
         break;

@@ -28,7 +28,8 @@ public:
     {
         MAIN_MENU,
         LEVEL_SELECT,
-        PLAYING
+        LEVEL_ONE,
+        LEVEL_TWO
     };
 
     // Current state of the application
@@ -58,11 +59,12 @@ private:
     // Rendering methods for different states
     void renderMainMenu();
     void renderLevelMenu();
-    void renderGame();
+    void renderLevelOne();
+    void renderLevelTwo();
 
     void  handleMainMenuEvents(sf::Event event);
     void  handleLevelSelectEvents(sf::Event event);
-    void  handlePlayingEvents(sf::Event event);
+    void  handleLevelEvents(sf::Event event);
 
     // Sprites and Textures
     sf::Texture cursorTexture;
@@ -95,11 +97,13 @@ private:
     sf::Text Exitw;
 
 
+
     // Loop variables
     bool isRunning;
     bool mainMenuState;
-    
+
 };
+
 
 // Objects and Backgrounds
 extern Object Floor;
@@ -108,6 +112,7 @@ extern Object Floor3;
 extern Object Sky;
 extern Object cloud1;
 extern Object Background1;
+extern Object Trees;
 
 
 extern bool Socket_Enabled;

@@ -6,9 +6,12 @@ Object Floor3("Resources/Terrain.png");
 Object Sky("Resources/Sky.jpg");
 Object cloud1("Resources/cloud1.png");
 Object Background1("Resources/BackgroundGround.png");
+Object Trees("Resources/trees.png");
 
 void SFMLApp::loadResources()
 {
+
+
     // Load the cursor texture
     if (!cursorTexture.loadFromFile("Resources/cursor.png"))
     {

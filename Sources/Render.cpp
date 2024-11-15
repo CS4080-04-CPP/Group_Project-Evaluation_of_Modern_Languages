@@ -13,8 +13,11 @@ void SFMLApp::render()
     case State::LEVEL_SELECT:
         renderLevelMenu();
         break;
-    case State::PLAYING:
-        renderGame();
+    case State::LEVEL_ONE:
+        renderLevelOne();
+        break;
+    case State::LEVEL_TWO:
+        renderLevelTwo();
         break;
     }
 
@@ -24,7 +27,11 @@ void SFMLApp::render()
     }
     else if (StateChange == 2)
     {
-        currentState = State::PLAYING;
+        currentState = State::LEVEL_ONE;
+    }
+    else if (StateChange == 3)
+    {
+        currentState = State::LEVEL_TWO;
     }
     else 
     {

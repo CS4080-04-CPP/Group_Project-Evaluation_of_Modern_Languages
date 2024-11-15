@@ -29,9 +29,14 @@ void SFMLApp::processEvents()
             handleLevelSelectEvents(event);
 
             break;
-        case State::PLAYING:
+        case State::LEVEL_ONE:
 
-            handlePlayingEvents(event);
+            handleLevelEvents(event);
+
+            break;
+        case State::LEVEL_TWO:
+
+            handleLevelEvents(event);
 
             break;
         }

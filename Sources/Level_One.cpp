@@ -2,19 +2,19 @@
 
 std::vector<Object> collidableObjects;
 static bool isInitialized = false;
-int var = -400;
+int var = -600;
 
-void SFMLApp::renderGame()
+void SFMLApp::renderLevelOne()
 {
-
-    
 
     if (!isInitialized)
     {
-        Floor.setPosition(0, 1025);
-        Floor2.setPosition(450, 800);
+        Floor.setPosition(0, 1000);
+        Floor2.setPosition(1450, 750);
+        Floor3.setPosition(1050, 450);
 
         Sky.setPosition(0,0);
+        Trees.setPosition(0, 40);
 
         Background1.setPosition(0,700);
         Background1.toggleTileMode();
@@ -23,24 +23,35 @@ void SFMLApp::renderGame()
         isInitialized = true;
     }
 
-    if (var < 1800) {
+    if (var < 2000) {
         var += 1; // Increase the variable by 100
     }
     else {
-        var = -400; // Reset the variable when it reaches 1400
+        var = -600; // Reset the variable when it reaches 1400
+    }
+
+    std::cout << hostCharacter->getPositionY() << std::endl;
+    sf::Vector2f tempVector(0.0f, 1000.0f);
+    if (hostCharacter->getPositionY() <= -20)
+    {
+        hostCharacter->setPosition(hostCharacter->getPosition() + tempVector);
+        StateChange = 3;
     }
 
     cloud1.setPosition(var, sin(var/9)*4 + 20);
 
     Sky.draw(window);
     cloud1.draw(window);
-    Background1.draw(window);
+    //Background1.draw(window);
+    //Trees.draw(window);
 
     Floor.draw(window);
     Floor2.draw(window);
+    Floor3.draw(window);
 
     collidableObjects.push_back(Floor);
     collidableObjects.push_back(Floor2);
+    collidableObjects.push_back(Floor3);
 
     if (Socket_Enabled == false)
     {

@@ -22,12 +22,13 @@
     <ClCompile Include="Sources\Character.cpp" />
     <ClCompile Include="Sources\Character_A_Animation.cpp" />
     <ClCompile Include="Sources\Character_B_Animation.cpp" />
+    <ClCompile Include="Sources\Level_Two.cpp" />
     <ClCompile Include="Sources\processEvents.cpp" />
     <ClCompile Include="Sources\InputManager.cpp" />
     <ClCompile Include="Sources\LevelMenu.cpp" />
     <ClCompile Include="Sources\LevelMenuEvents.cpp" />
     <ClCompile Include="Sources\Level_One.cpp" />
-    <ClCompile Include="Sources\Level_OneEvents.cpp" />
+    <ClCompile Include="Sources\LevelEvents.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\MainMenu.cpp" />
     <ClCompile Include="Sources\MainMenuEvents.cpp" />

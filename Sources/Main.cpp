@@ -49,6 +49,7 @@ SFMLApp::SFMLApp()
     initWindow();
     loadResources();
 
+
     isGrounded = false; 
     isRunning = true;
     currentState = State::MAIN_MENU;    // Begins the program at the Main Menu State.
