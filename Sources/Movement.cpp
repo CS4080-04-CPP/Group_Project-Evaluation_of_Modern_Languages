@@ -56,13 +56,14 @@ void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlay
             sf::FloatRect objBounds = obj.getSprite().getGlobalBounds();
 
             // Check collision with the top of the object
-            if (charBounds.top + charBounds.height > objBounds.top && charBounds.top < objBounds.top + objBounds.height)
+            if (velocity.y > 0) // Falling
             {
-                if (velocity.y > 0) // Falling
+                if (charBounds.top + charBounds.height > objBounds.top && charBounds.top < objBounds.top + objBounds.height)
                 {
+
                     // Check top and horizontal collision (left-right bounds)
                     if (charBounds.top + charBounds.height > objBounds.top && charBounds.top < objBounds.top + objBounds.height &&
-                        charBounds.left + charBounds.width > objBounds.left && charBounds.left < objBounds.left + objBounds.width &&
+                        charBounds.left + charBounds.width - 1 > objBounds.left && charBounds.left < objBounds.left + objBounds.width + 1 &&
                         charBounds.top <= objBounds.top - objBounds.height)
                     {
                         // Move character to the top of the object
@@ -70,21 +71,23 @@ void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlay
                         currentCharacter->setPosition(newPosition);
                         velocity.y = 0; // Stop downward velocity
                         isGrounded = true; // Set grounded because we hit the top of the object
-                       
+
                     }
-                }
+                }              
             }
+            
 
             // Check collision with the right side of the character
-            if (charBounds.left + charBounds.width > objBounds.left &&
-                charBounds.left < objBounds.left + objBounds.width)
+            if (velocity.x > 0) // Moving right
             {
-                // Check that the character is not standing on top of the object (above it)
-                if (charBounds.top >= objBounds.top && charBounds.top <= objBounds.top + objBounds.height) // Character is above the object
+
+                if (charBounds.left + charBounds.width > objBounds.left &&
+                    charBounds.left < objBounds.left + objBounds.width)
                 {
-                   
-                    if (velocity.x > 0) // Moving right
+                    // Check that the character is not standing on top or below the object
+                    if (charBounds.top >= objBounds.top && charBounds.top + charBounds.height <= objBounds.top + objBounds.height)
                     {
+
                         // Ensure the character is within the bounds of the object (not just to the left of it)
                         if (charBounds.left + charBounds.width > objBounds.left &&
                             charBounds.left < objBounds.left + objBounds.width)
@@ -99,15 +102,16 @@ void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlay
             }
 
             // Check collision with the left side of the character
-            if (charBounds.left < objBounds.left + objBounds.width &&
-                charBounds.left + charBounds.width > objBounds.left)
+            if (velocity.x < 0) // Moving left
             {
-                // Check that the character is not standing on top of the object (above it)
-                if (charBounds.top >= objBounds.top && charBounds.top <= objBounds.top + objBounds.height) // Character is above the object
-                {
 
-                    if (velocity.x < 0) // Moving left
+                if (charBounds.left < objBounds.left + objBounds.width &&
+                    charBounds.left + charBounds.width > objBounds.left)
+                {
+                    // Check that the character is not standing on top or below the object
+                    if (charBounds.top >= objBounds.top && charBounds.top + charBounds.height <= objBounds.top + objBounds.height)
                     {
+
                         // Ensure the character is within the bounds of the object (not just to the right of it)
                         if (charBounds.left + charBounds.width > objBounds.left &&
                             charBounds.left < objBounds.left + objBounds.width)
@@ -117,10 +121,25 @@ void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlay
                             currentCharacter->setPosition(newPosition);
                             velocity.x = 0; // Stop horizontal movement
                         }
-                    }
+                    }                
                 }
             }
-            
+
+            // Check collision with the bottom of the object
+            if (velocity.y < 0) // Moving upward
+            {
+                if (charBounds.top < objBounds.top + objBounds.height &&
+                    charBounds.top + charBounds.height > objBounds.top + objBounds.height &&
+                    charBounds.left + charBounds.width - 1 > objBounds.left &&
+                    charBounds.left < objBounds.left + objBounds.width + 1)
+                {
+                    // Move the character to the bottom of the object
+                    sf::Vector2f newPosition(currentCharacter->getPositionX(), objBounds.top + objBounds.height + 1);
+                    currentCharacter->setPosition(newPosition);
+                    velocity.y = 0; // Stop upward movement
+                }           
+            }
+
 
             // Check if character is off the object horizontally (left-right bounds check)
             if (charBounds.left + charBounds.width < objBounds.left || charBounds.left > objBounds.left + objBounds.width)
@@ -135,17 +154,16 @@ void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlay
                 velocity.y = -20; // Set jump velocity (negative for upward movement)
                 isGrounded = false; // Character is now in the air
             }
-        }
-
-        // Apply gravity when not grounded
-        if (!isGrounded)
-        {
-            currentCharacter->setVelocity(velocity.x, velocity.y);
-        }
-        else
-        {
-            // Prevent jittering by stopping vertical movement when grounded
-            currentCharacter->setVelocity(velocity.x, 0); // Set vertical velocity to 0 if grounded
-        }
+            // Apply gravity when not grounded
+            if (!isGrounded)
+            {
+                currentCharacter->setVelocity(velocity.x, velocity.y);
+            }
+            else
+            {
+                // Prevent jittering by stopping vertical movement when grounded
+                currentCharacter->setVelocity(velocity.x, 0); // Set vertical velocity to 0 if grounded
+            }
+        }        
     }
 }

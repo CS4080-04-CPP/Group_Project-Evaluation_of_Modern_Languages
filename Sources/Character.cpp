@@ -83,6 +83,17 @@ void Character::setHost(bool hostStatus)
         
 }
 
+int Character::getState() const
+{
+    return state;
+}
+
+void Character::setState(int State)
+{
+    this->state = State;
+
+
+}
 
 // Movement logic
 void Character::move(float deltaX, float deltaY)

@@ -17,6 +17,7 @@ private:
     float velocityY = 0;
     int health;
     bool host;
+    int state;
     int characterType;
 
 public:
@@ -36,6 +37,9 @@ public:
     float getPositionX() const;   
     float getPositionY() const;
     void setPosition(const sf::Vector2f& position);
+
+    int getState() const;
+    void setState(int State);
 
     void setVelocity(float vx, float vy);
     sf::Vector2f getVelocity() const;

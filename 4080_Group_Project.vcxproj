@@ -48,7 +48,6 @@
     <Image Include="..\..\..\..\Downloads\left.png" />
     <Image Include="..\..\..\..\Downloads\right.png" />
     <Image Include="Resources\background.png" />
-    <Image Include="Resources\BackgroundGround.png" />
     <Image Include="Resources\background_Blur.png" />
     <Image Include="Resources\CharacterA_Temp.png" />
     <Image Include="Resources\CharacterB_Temp.png" />
@@ -56,9 +55,10 @@
     <Image Include="Resources\characterSelectBoxActive.png" />
     <Image Include="Resources\Cloud1.png" />
     <Image Include="Resources\cursor.png" />
-    <Image Include="Resources\Sky.jpg" />
+    <Image Include="Resources\Sky2.png" />
     <Image Include="Resources\TempTerrain.png" />
     <Image Include="Resources\Terrain.png" />
+    <Image Include="Resources\Wall.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\KGHAPPY.ttf" />

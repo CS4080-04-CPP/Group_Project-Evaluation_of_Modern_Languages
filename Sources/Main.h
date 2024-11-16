@@ -109,10 +109,13 @@ private:
 extern Object Floor;
 extern Object Floor2;
 extern Object Floor3;
+extern Object Floor4;
+extern Object Floor5;
+extern Object RightWall;
+extern Object LeftWall;
 extern Object Sky;
+extern Object Sky2;
 extern Object cloud1;
-extern Object Background1;
-extern Object Trees;
 
 
 extern bool Socket_Enabled;

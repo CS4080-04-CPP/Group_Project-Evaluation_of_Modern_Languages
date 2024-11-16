@@ -1,15 +1,43 @@
 #include "Main.h"
 
+extern std::vector<Object> collidableObjectsLevelOne;
+extern std::vector<Object> collidableObjectsLevelTwo;
+
 Object Floor("Resources/TempTerrain.png");
 Object Floor2("Resources/Terrain.png");
 Object Floor3("Resources/Terrain.png");
-Object Sky("Resources/Sky.jpg");
+Object Floor4("Resources/Terrain.png");
+Object Floor5("Resources/Terrain.png");
+Object Sky("Resources/Sky.png");
+Object Sky2("Resources/Sky2.png");
+Object LeftWall("Resources/Wall.png");
+Object RightWall("Resources/Wall.png");
 Object cloud1("Resources/cloud1.png");
-Object Background1("Resources/BackgroundGround.png");
-Object Trees("Resources/trees.png");
 
 void SFMLApp::loadResources()
 {
+
+    LeftWall.setPosition(-60, 0);
+    RightWall.setPosition(1920, 0);
+
+    Floor.setPosition(0, 1010);
+    Floor2.setPosition(1450, 750);
+    Floor3.setPosition(1050, 450);
+    Floor4.setPosition(1350, 150);
+    Floor5.setPosition(800, 800);
+    Sky.setPosition(0, 0);
+    Sky2.setPosition(0, 0);
+
+    collidableObjectsLevelOne.push_back(LeftWall);
+    collidableObjectsLevelOne.push_back(RightWall);
+    collidableObjectsLevelOne.push_back(Floor);
+    collidableObjectsLevelOne.push_back(Floor2);
+    collidableObjectsLevelOne.push_back(Floor3);
+    collidableObjectsLevelOne.push_back(Floor4);
+
+    collidableObjectsLevelTwo.push_back(Floor5);
+    collidableObjectsLevelTwo.push_back(LeftWall);
+    collidableObjectsLevelTwo.push_back(RightWall);
 
 
     // Load the cursor texture

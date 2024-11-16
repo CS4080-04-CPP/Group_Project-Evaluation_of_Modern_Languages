@@ -57,19 +57,19 @@ void SFMLApp::handleMainMenuEvents(sf::Event event)
                 if (Connected == false) // Single-player or no connection
                 {
 
-                    initializeCharacter(hostCharacter, "Character A", sf::Vector2f(0.f, 0.f), 1);
+                    initializeCharacter(hostCharacter, "Character A", sf::Vector2f(100.f, 800.f), 1);
                     StateChange = 2;
 
                 }
                 else if (Host) // Host player creates character A
                 {
-                    initializeCharacter(hostCharacter, "Character A", sf::Vector2f(0.f, 0.f), 1);  
+                    initializeCharacter(hostCharacter, "Character A", sf::Vector2f(100.f, 800.f), 1);
                     StateChange = 2;
               
                 }
                 else // Client player creates character A
                 {
-                    initializeCharacter(clientCharacter, "Character A", sf::Vector2f(200.f, 0.f), 1);
+                    initializeCharacter(clientCharacter, "Character A", sf::Vector2f(300.f, 800.f), 1);
                     StateChange = 2;
 
                 }
@@ -82,21 +82,21 @@ void SFMLApp::handleMainMenuEvents(sf::Event event)
                 if (Connected == false) // Single-player or no connection
                 {
 
-                    initializeCharacter(hostCharacter, "Character B", sf::Vector2f(0.f, 0.f), 2);
+                    initializeCharacter(hostCharacter, "Character B", sf::Vector2f(100.f, 800.f), 2);
                     StateChange = 2;
 
                 }
                 else if (Host) // Host player creates character B
                 {
                     
-                    initializeCharacter(hostCharacter, "Character B", sf::Vector2f(0.f, 0.f), 2);                    
+                    initializeCharacter(hostCharacter, "Character B", sf::Vector2f(100.f, 800.f), 2);
                     StateChange = 2;
 
                 }
                 else // Client player creates character B
                 {
                     
-                    initializeCharacter(clientCharacter, "Character B", sf::Vector2f(200.f, 0.f), 2);
+                    initializeCharacter(clientCharacter, "Character B", sf::Vector2f(300.f, 800.f), 2);
                     StateChange = 2;
 
                 }
