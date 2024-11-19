@@ -6,12 +6,16 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Network.hpp>
+
 #include "Character.h"
-#include "InputManager.h"
 #include "Object.h" 
+#include "InputManager.h"
 
 #include <iostream>
 #include <string>
+#include <sstream>
+
+#include <thread>
 #include <memory>
 #include <mutex>
 
@@ -26,6 +30,7 @@ public:
     // Enumeration for game states
     enum class State
     {
+
         MAIN_MENU,
         LEVEL_SELECT,
         LEVEL_ONE,
@@ -34,6 +39,7 @@ public:
 
     // Current state of the application
     State currentState;
+    State delayedState;
 
     // Main loop
     void run();
@@ -41,10 +47,7 @@ public:
 private:
 
     // Window object
-    sf::RenderWindow window;    
-
-    // Initialization function
-    void initWindow();
+    sf::RenderWindow window;
 
     // Event handling function
     void processEvents();
@@ -63,12 +66,10 @@ private:
     void renderLevelTwo();
 
     void  handleMainMenuEvents(sf::Event event);
-    void  handleLevelSelectEvents(sf::Event event);
+    void  handleLevelSelectEvents(sf::Event event, State state);
     void  handleLevelEvents(sf::Event event);
 
-    // Sprites and Textures
-    sf::Texture cursorTexture;
-    sf::Sprite cursorSprite;
+    // Scaleble Sprites and Textures
 
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
@@ -84,19 +85,12 @@ private:
     sf::Sprite SelectbackgroundSpriteLeftActive;
     sf::Sprite SelectbackgroundSpriteRightActive;
 
-
     sf::Sprite tempPlayerASprite;
     sf::Sprite tempPlayerBSprite;
     sf::Texture tempPlayerATexture;
     sf::Sprite tempPlayerASprite2;
     sf::Texture tempPlayerBTexture;
     sf::Sprite tempPlayerBSprite2;
-
-    sf::Text singlePlayer;
-    sf::Text coOp;
-    sf::Text Exitw;
-
-
 
     // Loop variables
     bool isRunning;
@@ -111,11 +105,13 @@ extern Object Floor2;
 extern Object Floor3;
 extern Object Floor4;
 extern Object Floor5;
+extern Object Floor6;
 extern Object RightWall;
 extern Object LeftWall;
 extern Object Sky;
 extern Object Sky2;
 extern Object cloud1;
+extern Object cursorSprite;
 
 
 extern bool Socket_Enabled;
@@ -127,7 +123,9 @@ extern bool isGrounded;
 
 extern int screenWidth;
 extern int screenHeight;
-extern int StateChange;
+
+extern std::vector<Object> collidableObjectsLevelOne;
+extern std::vector<Object> collidableObjectsLevelTwo;
 
 extern InputManager inputManager;
 extern std::mutex characterMutex;

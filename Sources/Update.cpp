@@ -5,21 +5,11 @@
 void SFMLApp::update(sf::Window& window)
 {
 
-    // Update logic based on current state
-    switch (currentState)
+    // Handle input while playing
+    if (currentState != State::MAIN_MENU && currentState != State::LEVEL_SELECT)
     {
-    case State::MAIN_MENU:
-        
-        break;
-    case State::LEVEL_SELECT:
-        
-        break;
-    case State::LEVEL_ONE:
-        inputManager.processInput(window);
 
-    case State::LEVEL_TWO:
         inputManager.processInput(window);
-        
-        break;
     }
+
 }

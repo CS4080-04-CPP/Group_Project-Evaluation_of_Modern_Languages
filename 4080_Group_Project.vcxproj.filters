@@ -61,24 +61,24 @@
     <Filter Include="Sound Effects">
       <UniqueIdentifier>{ddaf47cc-baa9-45a0-bffd-5eb1d3096014}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Levels\Level_Two">
+      <UniqueIdentifier>{3281a3b0-cc0a-49be-bbb0-dab59167998d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Level_OneEvents.cpp">
-      <Filter>Source Files\Levels\Level_One</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Level_One.cpp">
+    <ClCompile Include="Sources\renderLevelOne.cpp">
       <Filter>Source Files\Levels\Level_One</Filter>
     </ClCompile>
     <ClCompile Include="Sources\LevelMenuEvents.cpp">
       <Filter>Source Files\Levels\LevelMenu</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\LevelMenu.cpp">
+    <ClCompile Include="Sources\renderLevelMenu.cpp">
       <Filter>Source Files\Levels\LevelMenu</Filter>
     </ClCompile>
     <ClCompile Include="Sources\MainMenuEvents.cpp">
       <Filter>Source Files\Levels\MainMenu</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\MainMenu.cpp">
+    <ClCompile Include="Sources\renderMainMenu.cpp">
       <Filter>Source Files\Levels\MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Main.cpp">
@@ -113,6 +113,15 @@
     </ClCompile>
     <ClCompile Include="Sources\Movement.cpp">
       <Filter>Source Files\GameLogic\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\renderLevelTwo.cpp">
+      <Filter>Source Files\Levels\Level_Two</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Object.cpp">
+      <Filter>Source Files\GameLogic\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\LevelEvents.cpp">
+      <Filter>Source Files\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,14 +172,14 @@
     <Image Include="Resources\Cloud1.png">
       <Filter>Resource Files\LevelOne</Filter>
     </Image>
-    <Image Include="Resources\BackgroundGround.png">
-      <Filter>Resource Files\LevelOne</Filter>
-    </Image>
-    <Image Include="Resources\Sky.jpg">
-      <Filter>Resource Files\LevelOne</Filter>
-    </Image>
     <Image Include="Resources\TempTerrain.png">
       <Filter>Resource Files\LevelOne</Filter>
+    </Image>
+    <Image Include="Resources\Sky2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Wall.png">
+      <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

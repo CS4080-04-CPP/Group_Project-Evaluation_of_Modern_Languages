@@ -12,6 +12,7 @@ void SFMLApp::processEvents()
 
         if (event.type == sf::Event::Closed)
         {
+
             window.close();
             isRunning = false;
         }
@@ -26,7 +27,7 @@ void SFMLApp::processEvents()
             break;
         case State::LEVEL_SELECT:
 
-            handleLevelSelectEvents(event);
+            handleLevelSelectEvents(event, delayedState);
 
             break;
         case State::LEVEL_ONE:

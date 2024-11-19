@@ -6,6 +6,7 @@
 
 class InputManager
 {
+
 public:
     // Constructor
     InputManager() = default;

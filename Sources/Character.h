@@ -9,16 +9,17 @@
 
 class Character
 {
+
 private:
     std::string name;
     sf::Vector2f position;
     sf::Sprite sprite;
     float velocityX = 0;
     float velocityY = 0;
-    int health;
     bool host;
     int state;
     int characterType;
+    int level = 1;
 
 public:
     // Constructor
@@ -27,6 +28,9 @@ public:
     // Getters and Setters
     int getCharacterType() const;
     void setCharacterType(int type);
+
+    int getLevel() const;
+    void setLevel(const int level);
 
     std::string getName() const;
     void setName(const std::string& name);
@@ -44,9 +48,6 @@ public:
     void setVelocity(float vx, float vy);
     sf::Vector2f getVelocity() const;
 
-    int getHealth() const;
-    void setHealth(int health);
-
     bool isHost() const;
     void setHost(bool hostStatus);
 
@@ -56,9 +57,6 @@ public:
     // Multiplayer send/receive logic
     void sendPosition(sf::TcpSocket& socket);
     void receivePosition(const std::string& data);
-
-    // Special actions
-    void performSpecialAction();
 
     // Helper functions for sending/receiving data over the network
     void sendData(sf::TcpSocket& socket, const std::string& data);

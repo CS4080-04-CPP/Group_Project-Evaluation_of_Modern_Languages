@@ -1,19 +1,16 @@
 #include "Main.h"
-#include <SFML/Network.hpp>
-#include <thread>
-#include <sstream>
-#include "Character.h"
-
 
 // Host game logic
 void hostGameLogic(Character& character, Character& character2)
 {
+
     // Create a listener to wait for incoming connections
     sf::TcpListener listener;
 
     // Bind the listener to a port
     if (listener.listen(54000) != sf::Socket::Done)
     {
+
         std::cout << "Error: Unable to bind the listener to the port\n";
         return;
     }
@@ -24,6 +21,7 @@ void hostGameLogic(Character& character, Character& character2)
     sf::TcpSocket socket;
     if (listener.accept(socket) != sf::Socket::Done)
     {
+
         std::cout << "Error: Unable to accept the client connection\n";
         return;
     }
@@ -39,7 +37,6 @@ void hostGameLogic(Character& character, Character& character2)
     while (true)
     {
        
-
         character2.sendPosition(socket);
 
         // Buffer for receiving data
@@ -49,6 +46,7 @@ void hostGameLogic(Character& character, Character& character2)
 
         if (status == sf::Socket::Done)
         {
+
             std::string receivedData(data, received);
             character.receivePosition(receivedData);
         }
@@ -58,6 +56,7 @@ void hostGameLogic(Character& character, Character& character2)
         }
         else
         {
+
             std::cout << "Error: Unable to receive data, status: " << status << "\n";
             break; // Exitw the loop on error
         }
@@ -67,10 +66,12 @@ void hostGameLogic(Character& character, Character& character2)
 // Client game logic
 void connectGameLogic(Character& character, Character& character2)
 {
+
     sf::TcpSocket socket;
 
     if (socket.connect("127.0.0.1", 54000) != sf::Socket::Done)
     {
+
         std::cout << "Error: Unable to connect to the host\n";
         return;
     }
@@ -84,8 +85,7 @@ void connectGameLogic(Character& character, Character& character2)
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
     while (true)
-    {
-        
+    {       
 
         // Send character position to the host
         character2.sendPosition(socket);
@@ -97,15 +97,18 @@ void connectGameLogic(Character& character, Character& character2)
 
         if (status == sf::Socket::Done)
         {
+
             std::string receivedData(data, received);
             character.receivePosition(receivedData);
         }
         else if (status == sf::Socket::NotReady)
         {
+
             // Socket is not ready, wait a bit before retrying
         }
         else
         {
+
             std::cout << "Error: Unable to receive data, status: " << status << "\n";
             break; // Exitw the loop on error
         }

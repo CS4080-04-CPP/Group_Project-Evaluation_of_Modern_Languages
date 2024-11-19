@@ -21,11 +21,13 @@ void SFMLApp::renderLevelMenu()
 	// Change color if mouse is hovering over the text
 	if (text.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
 	{
+
 		text.setFillColor(sf::Color::Red); // Change to red
 	}
 
 	if (text2.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)))
 	{
+
 		text2.setFillColor(sf::Color::Red); // Change to red
 	}
 	

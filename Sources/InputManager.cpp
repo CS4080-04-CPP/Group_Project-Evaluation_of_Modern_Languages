@@ -2,9 +2,11 @@
 
 void InputManager::processInput(sf::Window& window)
 {
+
     // Only process input if the window is in focus
     if (!window.hasFocus())
     {
+
         moveLeft = false;
         moveRight = false;
         jump = false;

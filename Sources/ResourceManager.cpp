@@ -1,18 +1,17 @@
 #include "Main.h"
 
-extern std::vector<Object> collidableObjectsLevelOne;
-extern std::vector<Object> collidableObjectsLevelTwo;
-
 Object Floor("Resources/TempTerrain.png");
 Object Floor2("Resources/Terrain.png");
 Object Floor3("Resources/Terrain.png");
 Object Floor4("Resources/Terrain.png");
 Object Floor5("Resources/Terrain.png");
+Object Floor6("Resources/Terrain.png");
 Object Sky("Resources/Sky.png");
 Object Sky2("Resources/Sky2.png");
 Object LeftWall("Resources/Wall.png");
 Object RightWall("Resources/Wall.png");
 Object cloud1("Resources/cloud1.png");
+Object cursorSprite("Resources/cursor.png");
 
 void SFMLApp::loadResources()
 {
@@ -25,6 +24,7 @@ void SFMLApp::loadResources()
     Floor3.setPosition(1050, 450);
     Floor4.setPosition(1350, 150);
     Floor5.setPosition(800, 800);
+    Floor6.setPosition(400, 500);
     Sky.setPosition(0, 0);
     Sky2.setPosition(0, 0);
 
@@ -34,25 +34,17 @@ void SFMLApp::loadResources()
     collidableObjectsLevelOne.push_back(Floor2);
     collidableObjectsLevelOne.push_back(Floor3);
     collidableObjectsLevelOne.push_back(Floor4);
+  
 
     collidableObjectsLevelTwo.push_back(Floor5);
+    collidableObjectsLevelTwo.push_back(Floor6);
     collidableObjectsLevelTwo.push_back(LeftWall);
     collidableObjectsLevelTwo.push_back(RightWall);
-
-
-    // Load the cursor texture
-    if (!cursorTexture.loadFromFile("Resources/cursor.png"))
-    {
-        std::cerr << "Error: Could not load cursor texture." << std::endl;
-    }
-
-    // Types: Demonstrates object-oriented manipulation of types like sf::Sprite and sf::Texture.
-    cursorSprite.setTexture(cursorTexture);
-    cursorSprite.setOrigin(cursorTexture.getSize().x / 2.f, cursorTexture.getSize().y / 2.f); // Set origin to center
 
     // Load the background texture
     if (!backgroundTexture.loadFromFile("Resources/background.png"))
     {
+
         std::cerr << "Error: Could not load background texture." << std::endl;
     }
 
@@ -61,6 +53,7 @@ void SFMLApp::loadResources()
     // Load temp PlayerA texture
     if (!tempPlayerATexture.loadFromFile("Resources/CharacterA_Temp.png"))
     {
+
         std::cerr << "Error: Could not load background texture." << std::endl;
     }
 
@@ -70,6 +63,7 @@ void SFMLApp::loadResources()
     // Load temp PlayerB texture
     if (!tempPlayerBTexture.loadFromFile("Resources/CharacterB_Temp.png"))
     {
+
         std::cerr << "Error: Could not load background texture." << std::endl;
     }
 
@@ -80,6 +74,7 @@ void SFMLApp::loadResources()
     // Load the background_blur texture
     if (!backgroundBlurTexture.loadFromFile("Resources/background_blur.png"))
     {
+
         std::cerr << "Error: Could not load background texture." << std::endl;
     }
 
@@ -88,6 +83,7 @@ void SFMLApp::loadResources()
     // Load the background texture
     if (!SelectbackgroundTexture.loadFromFile("Resources/characterSelectBox.png"))
     {
+
         std::cerr << "Error: Could not load background texture." << std::endl;
     }
 
@@ -97,13 +93,13 @@ void SFMLApp::loadResources()
     // Load the background texture
     if (!SelectbackgroundTextureActive.loadFromFile("Resources/characterSelectBoxActive.png"))
     {
+
         std::cerr << "Error: Could not load background texture." << std::endl;
     }
 
     SelectbackgroundSpriteLeftActive.setTexture(SelectbackgroundTextureActive);
     SelectbackgroundSpriteRightActive.setTexture(SelectbackgroundTextureActive);
 
-  
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = backgroundTexture.getSize();
 
@@ -115,7 +111,7 @@ void SFMLApp::loadResources()
     backgroundBlurSprite.setScale(scaleX, scaleY);
 
     SelectbackgroundSpriteLeft.setPosition(screenWidth / 2 - 250, screenHeight / 2 - 250);
-    SelectbackgroundSpriteLeft.setScale(2,2);
+    SelectbackgroundSpriteLeft.setScale(2, 2);
     SelectbackgroundSpriteRight.setPosition(screenWidth / 2 + 50, screenHeight / 2 - 250);
     SelectbackgroundSpriteRight.setScale(2, 2);
 
@@ -124,4 +120,6 @@ void SFMLApp::loadResources()
     SelectbackgroundSpriteRightActive.setPosition(screenWidth / 2 + 50, screenHeight / 2 - 250);
     SelectbackgroundSpriteRightActive.setScale(2, 2);
 
+
 }
+
