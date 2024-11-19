@@ -163,12 +163,6 @@
     <Image Include="Resources\Terrain.png">
       <Filter>Resource Files\LevelOne</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\left.png">
-      <Filter>Resource Files\CharacterA_Animation</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Downloads\right.png">
-      <Filter>Resource Files\CharacterA_Animation</Filter>
-    </Image>
     <Image Include="Resources\Cloud1.png">
       <Filter>Resource Files\LevelOne</Filter>
     </Image>
@@ -180,6 +174,15 @@
     </Image>
     <Image Include="Resources\Wall.png">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Jacob left.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Jacob right.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Jacob.png">
+      <Filter>Resource Files\MainMenu</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

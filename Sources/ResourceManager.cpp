@@ -51,7 +51,7 @@ void SFMLApp::loadResources()
     backgroundSprite.setTexture(backgroundTexture);
 
     // Load temp PlayerA texture
-    if (!tempPlayerATexture.loadFromFile("Resources/CharacterA_Temp.png"))
+    if (!tempPlayerATexture.loadFromFile("Resources/Jacob right.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;
@@ -81,7 +81,7 @@ void SFMLApp::loadResources()
     backgroundBlurSprite.setTexture(backgroundBlurTexture);
 
     // Load the background texture
-    if (!SelectbackgroundTexture.loadFromFile("Resources/characterSelectBox.png"))
+    if (!SelectbackgroundTexture.loadFromFile("Resources/Jacob.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;
@@ -91,7 +91,7 @@ void SFMLApp::loadResources()
     SelectbackgroundSpriteRight.setTexture(SelectbackgroundTexture);
 
     // Load the background texture
-    if (!SelectbackgroundTextureActive.loadFromFile("Resources/characterSelectBoxActive.png"))
+    if (!SelectbackgroundTextureActive.loadFromFile("Resources/Jacob.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;
