@@ -45,6 +45,7 @@ void SFMLApp::renderLevelOne()
 
             window.draw(tempPlayerASprite);
             tempPlayerASprite.setPosition(hostCharacter->getPosition());
+            UpdateAnimationsJacob(tempPlayerASprite);
             moveMents(collidableObjectsLevelOne, tempPlayerASprite);
         }
         if (hostCharacter->getCharacterType() == 2)
@@ -52,6 +53,7 @@ void SFMLApp::renderLevelOne()
 
             window.draw(tempPlayerBSprite);
             tempPlayerBSprite.setPosition(hostCharacter->getPosition());
+            UpdateAnimationsMichelle(tempPlayerBSprite);
             moveMents(collidableObjectsLevelOne, tempPlayerBSprite);
         }
     }
@@ -64,7 +66,11 @@ void SFMLApp::renderLevelOne()
             window.draw(tempPlayerASprite);
             tempPlayerASprite.setPosition(hostCharacter->getPosition());
             
-            if (hostCharacter->isHost()) moveMents(collidableObjectsLevelOne, tempPlayerASprite);
+            if (hostCharacter->isHost())
+            {
+                UpdateAnimationsJacob(tempPlayerASprite);
+                moveMents(collidableObjectsLevelOne, tempPlayerASprite);
+            }
 
         }
         else if (hostCharacter->getCharacterType() == 2 && hostCharacter->getLevel() == 1)
@@ -73,7 +79,11 @@ void SFMLApp::renderLevelOne()
             window.draw(tempPlayerBSprite);
             tempPlayerBSprite.setPosition(hostCharacter->getPosition());
             
-            if (hostCharacter->isHost()) moveMents(collidableObjectsLevelOne, tempPlayerBSprite);
+            if (hostCharacter->isHost())
+            {
+                UpdateAnimationsMichelle(tempPlayerBSprite);
+                moveMents(collidableObjectsLevelOne, tempPlayerBSprite);
+            }
 
         }
 

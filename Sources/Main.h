@@ -65,6 +65,9 @@ private:
     void renderLevelOne();
     void renderLevelTwo();
 
+    void UpdateAnimationsJacob(sf::Sprite);
+    void UpdateAnimationsMichelle(sf::Sprite);
+
     void  handleMainMenuEvents(sf::Event event);
     void  handleLevelSelectEvents(sf::Event event, State state);
     void  handleLevelEvents(sf::Event event);
@@ -112,6 +115,14 @@ extern Object Sky;
 extern Object Sky2;
 extern Object cloud1;
 extern Object cursorSprite;
+
+extern Object JacobForward;
+extern Object JacobLeft;
+extern Object JacobRight;
+
+extern Object MichelleForward;
+extern Object MichelleLeft;
+extern Object MichelleRight;
 
 
 extern bool Socket_Enabled;

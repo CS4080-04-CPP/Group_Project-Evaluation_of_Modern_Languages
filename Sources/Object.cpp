@@ -13,6 +13,7 @@ Object::Object(const std::string& imagePath)
     // Set up the sprite with the texture
     sprite.setTexture(texture);
     size = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
+
 }
 
 void Object::toggleTileMode()
@@ -64,6 +65,22 @@ void Object::draw(sf::RenderWindow& window)
         sprite.setPosition(position);
         window.draw(sprite);
     }
+}
+
+void Object::rotate(float angle)
+{
+
+    // Apply the rotation
+    sprite.rotate(angle);
+
+    if (sprite.getRotation() > 5.0f) sprite.setRotation(0);
+}
+
+void Object::centerOrigin()
+{
+
+    sf::FloatRect bounds = sprite.getLocalBounds();
+    sprite.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
 }
 
 Object::~Object() 

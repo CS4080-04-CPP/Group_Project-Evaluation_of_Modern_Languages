@@ -48,6 +48,7 @@ void SFMLApp::renderLevelTwo()
                 
             window.draw(tempPlayerASprite);
             tempPlayerASprite.setPosition(hostCharacter->getPosition());
+            UpdateAnimationsJacob(tempPlayerASprite);
             moveMents(collidableObjectsLevelTwo, tempPlayerASprite);               
         }
 
@@ -56,6 +57,7 @@ void SFMLApp::renderLevelTwo()
 
             window.draw(tempPlayerBSprite);
             tempPlayerBSprite.setPosition(hostCharacter->getPosition());
+            UpdateAnimationsMichelle(tempPlayerBSprite);
             moveMents(collidableObjectsLevelTwo, tempPlayerBSprite);
         }
     }

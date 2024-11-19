@@ -46,8 +46,8 @@
     <ClInclude Include="Sources\Object.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Downloads\Jacob left.png" />
-    <Image Include="..\..\..\..\Downloads\Jacob right.png" />
+    <Image Include="..\..\..\..\Downloads\Jacob_left.png" />
+    <Image Include="..\..\..\..\Downloads\Jacob_right.png" />
     <Image Include="..\..\..\..\Downloads\Jacob.png" />
     <Image Include="Resources\background.png" />
     <Image Include="Resources\background_Blur.png" />

@@ -13,6 +13,14 @@ Object RightWall("Resources/Wall.png");
 Object cloud1("Resources/cloud1.png");
 Object cursorSprite("Resources/cursor.png");
 
+Object JacobForward("Resources/Jacob.png");
+Object JacobLeft("Resources/Jacob_left.png");
+Object JacobRight("Resources/Jacob_right.png");
+
+Object MichelleForward("Resources/Jacob.png");
+Object MichelleLeft("Resources/Jacob_left.png");
+Object MichelleRight("Resources/Jacob_right.png");
+
 void SFMLApp::loadResources()
 {
 
@@ -27,6 +35,8 @@ void SFMLApp::loadResources()
     Floor6.setPosition(400, 500);
     Sky.setPosition(0, 0);
     Sky2.setPosition(0, 0);
+
+    JacobForward.setPosition(0, 0);
 
     collidableObjectsLevelOne.push_back(LeftWall);
     collidableObjectsLevelOne.push_back(RightWall);
@@ -51,7 +61,7 @@ void SFMLApp::loadResources()
     backgroundSprite.setTexture(backgroundTexture);
 
     // Load temp PlayerA texture
-    if (!tempPlayerATexture.loadFromFile("Resources/Jacob.png"))
+    if (!tempPlayerATexture.loadFromFile("Resources/CharacterA_Temp.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;
@@ -81,7 +91,7 @@ void SFMLApp::loadResources()
     backgroundBlurSprite.setTexture(backgroundBlurTexture);
 
     // Load the background texture
-    if (!SelectbackgroundTexture.loadFromFile("Resources/Jacob.png"))
+    if (!SelectbackgroundTexture.loadFromFile("Resources/characterSelectBox.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;
@@ -91,7 +101,7 @@ void SFMLApp::loadResources()
     SelectbackgroundSpriteRight.setTexture(SelectbackgroundTexture);
 
     // Load the background texture
-    if (!SelectbackgroundTextureActive.loadFromFile("Resources/Jacob.png"))
+    if (!SelectbackgroundTextureActive.loadFromFile("Resources/characterSelectBoxActive.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;

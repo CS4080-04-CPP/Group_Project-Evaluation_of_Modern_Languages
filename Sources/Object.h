@@ -16,6 +16,8 @@ public:
     void setTileRepeats(int horizontal, int vertical);
     void setPosition(float x, float y);
     void draw(sf::RenderWindow& window);
+    void rotate(float angle);
+    void centerOrigin();
 
 private:
     sf::Texture texture;

@@ -75,9 +75,10 @@ void SFMLApp::run()
 
         sf::Time deltaTime = clock.restart();
 
+        update(window);      // Update states and Animation
         processEvents();     // Handle inputs
         render();            // Draw everything to the window
-        update(window);      // Update states and Animation
+        
 
         sf::sleep(sf::seconds(1.f / 60.f) - deltaTime); // Framerate Target
 
