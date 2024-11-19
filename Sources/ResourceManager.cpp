@@ -51,7 +51,7 @@ void SFMLApp::loadResources()
     backgroundSprite.setTexture(backgroundTexture);
 
     // Load temp PlayerA texture
-    if (!tempPlayerATexture.loadFromFile("Resources/Jacob right.png"))
+    if (!tempPlayerATexture.loadFromFile("Resources/Jacob.png"))
     {
 
         std::cerr << "Error: Could not load background texture." << std::endl;
