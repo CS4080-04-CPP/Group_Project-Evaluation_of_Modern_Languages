@@ -17,9 +17,9 @@ Object JacobForward("Resources/Jacob.png");
 Object JacobLeft("Resources/Jacob_left.png");
 Object JacobRight("Resources/Jacob_right.png");
 
-Object MichelleForward("Resources/Jacob.png");
-Object MichelleLeft("Resources/Jacob_left.png");
-Object MichelleRight("Resources/Jacob_right.png");
+Object MichelleForward("Resources/Michelle.png");
+Object MichelleLeft("Resources/Michelle_Left.png");
+Object MichelleRight("Resources/Michelle_Right.png");
 
 void SFMLApp::loadResources()
 {

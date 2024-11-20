@@ -49,6 +49,9 @@
     <Image Include="..\..\..\..\Downloads\Jacob_left.png" />
     <Image Include="..\..\..\..\Downloads\Jacob_right.png" />
     <Image Include="..\..\..\..\Downloads\Jacob.png" />
+    <Image Include="..\..\..\..\Downloads\Michelle.png" />
+    <Image Include="..\..\..\..\Downloads\Michelle_Left.png" />
+    <Image Include="..\..\..\..\Downloads\Michelle_Right.png" />
     <Image Include="Resources\background.png" />
     <Image Include="Resources\background_Blur.png" />
     <Image Include="Resources\CharacterA_Temp.png" />

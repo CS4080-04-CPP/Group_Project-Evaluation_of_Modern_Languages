@@ -175,13 +175,22 @@
     <Image Include="Resources\Wall.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\Jacob left.png">
-      <Filter>Resource Files\MainMenu</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Downloads\Jacob right.png">
-      <Filter>Resource Files\MainMenu</Filter>
-    </Image>
     <Image Include="..\..\..\..\Downloads\Jacob.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Jacob_left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Jacob_right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Michelle.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Michelle_Left.png">
+      <Filter>Resource Files\MainMenu</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\Michelle_Right.png">
       <Filter>Resource Files\MainMenu</Filter>
     </Image>
   </ItemGroup>
