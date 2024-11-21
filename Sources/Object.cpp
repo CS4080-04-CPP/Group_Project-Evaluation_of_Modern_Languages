@@ -16,6 +16,11 @@ Object::Object(const std::string& imagePath)
 
 }
 
+void Object::setScale(float x, float y)
+{
+    sprite.setScale(x, y);
+}
+
 void Object::toggleTileMode()
 {
 

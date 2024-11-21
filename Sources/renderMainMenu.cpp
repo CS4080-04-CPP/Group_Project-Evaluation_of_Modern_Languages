@@ -1,6 +1,7 @@
 #include "Main.h"
 
 bool Socket_enabled;
+int q = 0;
 
 // Render the main menu
 void SFMLApp::renderMainMenu()
@@ -31,6 +32,8 @@ void SFMLApp::renderMainMenu()
     sf::Text host("Host", font, 60);                  // but as you can imagine that caused problems.
     sf::Text connect("Connect", font, 60);
     sf::Text playerSelect("Character Select", font2, 60);
+    sf::Text playerSelectJacob("Jacob", font2, 24);
+    sf::Text playerSelectMichelle("Michelle", font2, 24);
 
     // Set initial color to black
     singlePlayer.setFillColor(sf::Color::Black);
@@ -39,6 +42,8 @@ void SFMLApp::renderMainMenu()
     host.setFillColor(sf::Color::Black);
     connect.setFillColor(sf::Color::Black);
     playerSelect.setFillColor(sf::Color::Black);
+    playerSelectJacob.setFillColor(sf::Color::Black);
+    playerSelectMichelle.setFillColor(sf::Color::Black);
 
     // Set positions
     singlePlayer.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 300); 
@@ -47,6 +52,8 @@ void SFMLApp::renderMainMenu()
     host.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 300); 
     connect.setPosition(screenWidth / 2 + 600, screenHeight / 2 - 220); 
     playerSelect.setPosition(screenWidth / 2 - 300, screenHeight / 2 - 400); 
+    playerSelectJacob.setPosition(screenWidth / 2 - 180, screenHeight / 2 - 245);
+    playerSelectMichelle.setPosition(screenWidth / 2 + 105, screenHeight / 2 - 245);
 
     // Get the current mouse position relative to the window
     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
@@ -92,7 +99,7 @@ void SFMLApp::renderMainMenu()
     }
     else
     {
-        
+
         if (Socket_Enabled == true && Connected == false)
         {
 
@@ -102,27 +109,83 @@ void SFMLApp::renderMainMenu()
         
         if (Socket_Enabled == false || Connected == true)
         {
-           
+
+            q++;
+            if (q > 15) q = 0;
+
+            float jiggleValue = std::sin(q / 3.0f) / 5;
+
             window.draw(playerSelect);
             
-            if (mousePos.x >= 717 && mousePos.x <= 959 && mousePos.y >= 308 && mousePos.y <= 578)
+            JacobForward.setPosition(820, 440 + jiggleValue * 4);
+            MichelleForward.setPosition(1130, 440 + jiggleValue * 4);
+
+            if (mousePos.x >= 717 && mousePos.x <= 959 && mousePos.y >= 308 && mousePos.y <= 578 && hostCharacter->getCharacterType() != 1 &&
+                                                                                                    clientCharacter->getCharacterType() != 1)
             {
 
-                window.draw(SelectbackgroundSpriteLeftActive); 
-                window.draw(SelectbackgroundSpriteRight);
-            }  
-            else if (mousePos.x >= 1019 && mousePos.x <= 1257 && mousePos.y >= 303 && mousePos.y <= 577)
-            {
+                window.draw(SelectbackgroundSpriteLeftActive);
 
-                window.draw(SelectbackgroundSpriteLeft);
-                window.draw(SelectbackgroundSpriteRightActive);
-            } 
-            else 
-            {
+                if (hostCharacter->getCharacterType() != 2 && clientCharacter->getCharacterType() != 2)
+                {
 
-                window.draw(SelectbackgroundSpriteLeft);
-                window.draw(SelectbackgroundSpriteRight);
+                    window.draw(SelectbackgroundSpriteRight);
+                    MichelleForward.draw(window);
+                }
+                else
+                    characterSelectBoxRightInActive.draw(window);
+
+
+                JacobForward.draw(window);
+                
             }
+            else if (mousePos.x >= 1019 && mousePos.x <= 1257 && mousePos.y >= 303 && mousePos.y <= 577 && hostCharacter->getCharacterType() != 2 &&
+                                                                                                           clientCharacter->getCharacterType() != 2)
+            {
+
+                window.draw(SelectbackgroundSpriteRightActive);
+
+                if (hostCharacter->getCharacterType() != 1 && clientCharacter->getCharacterType() != 1)
+                {
+
+                    window.draw(SelectbackgroundSpriteLeft);
+                    JacobForward.draw(window);
+                }
+                else
+                    characterSelectBoxLeftInActive.draw(window);                    
+
+                MichelleForward.draw(window);
+                
+            }
+            else if (hostCharacter->getCharacterType() == 1 || clientCharacter->getCharacterType() == 1)
+            {
+
+                window.draw(SelectbackgroundSpriteRight);
+                MichelleForward.draw(window);
+                JacobForward.draw(window);
+                characterSelectBoxLeftInActive.draw(window);
+            }
+            else if (hostCharacter->getCharacterType() == 2 || clientCharacter->getCharacterType() == 2)
+            {
+                window.draw(SelectbackgroundSpriteLeft);
+                JacobForward.draw(window);
+                MichelleForward.draw(window);
+                characterSelectBoxRightInActive.draw(window);
+                                             
+            }
+            else
+            {
+
+                window.draw(SelectbackgroundSpriteLeft);
+                window.draw(SelectbackgroundSpriteRight);
+                JacobForward.draw(window);
+                MichelleForward.draw(window);              
+            }
+
+            window.draw(playerSelectJacob);
+            window.draw(playerSelectMichelle);
+            //JacobForward.draw(window);
+            //MichelleForward.draw(window);
         }
     }
 }

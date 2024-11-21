@@ -1,6 +1,7 @@
 #include "Main.h"
 #include "Character.h"
 
+bool stateChangeBool = false;
 
 // Function to handle main menu events (buttons and where they are pixel wise)
 void SFMLApp::handleMainMenuEvents(sf::Event event)
@@ -56,55 +57,63 @@ void SFMLApp::handleMainMenuEvents(sf::Event event)
         {
 
             // Character selection logic
-            if (mousePos.x >= 717 && mousePos.x <= 959 && mousePos.y >= 308 && mousePos.y <= 578)
+            if (mousePos.x >= 717 && mousePos.x <= 959 && mousePos.y >= 308 && mousePos.y <= 578 && hostCharacter->getCharacterType() != 1 &&
+                                                                                                    clientCharacter->getCharacterType() != 1)
             {
-               
+                //std::cout << hostCharacter->getCharacterType();
                 if (Connected == false) // Single-player or no connection
                 {
 
                     initializeCharacter(hostCharacter, "Character A", sf::Vector2f(100.f, 800.f), 1);
-                    currentState = State::LEVEL_ONE;
+                    stateChangeBool = true;
                 }
                 else if (Host) // Host player creates character A
                 {
-
+                    
                     initializeCharacter(hostCharacter, "Character A", sf::Vector2f(100.f, 800.f), 1);
-                    currentState = State::LEVEL_ONE;             
+                    stateChangeBool = true;
                 }
                 else // Client player creates character A
                 {
 
                     initializeCharacter(clientCharacter, "Character A", sf::Vector2f(300.f, 800.f), 1);
-                    currentState = State::LEVEL_ONE;
+                    stateChangeBool = true;
                 }
 
                 mainMenuState = true;
             }
             // Character B selection logic
-            else if (mousePos.x >= 1019 && mousePos.x <= 1257 && mousePos.y >= 303 && mousePos.y <= 577)
+            else if (mousePos.x >= 1019 && mousePos.x <= 1257 && mousePos.y >= 303 && mousePos.y <= 577 && hostCharacter->getCharacterType() != 2 &&
+                                                                                                           clientCharacter->getCharacterType() != 2)
             {                
 
                 if (Connected == false) // Single-player or no connection
                 {
 
                     initializeCharacter(hostCharacter, "Character B", sf::Vector2f(100.f, 800.f), 2);
-                    currentState = State::LEVEL_ONE;
+                    stateChangeBool = true;
                 }
                 else if (Host) // Host player creates character B
                 {
                     
                     initializeCharacter(hostCharacter, "Character B", sf::Vector2f(100.f, 800.f), 2);
-                    currentState = State::LEVEL_ONE;
+                    stateChangeBool = true;
                 }
                 else // Client player creates character B
                 {
                     
                     initializeCharacter(clientCharacter, "Character B", sf::Vector2f(300.f, 800.f), 2);
-                    currentState = State::LEVEL_ONE;
+                    stateChangeBool = true;
                 }
 
-                mainMenuState = true;
             }
+
+            if (stateChangeBool == true && hostCharacter->getCharacterType() != 0 && clientCharacter->getCharacterType() != 0 || (!Connected && stateChangeBool == true))
+            {
+                mainMenuState = true;
+                currentState = State::LEVEL_ONE;
+            }
+
         }
     }
 

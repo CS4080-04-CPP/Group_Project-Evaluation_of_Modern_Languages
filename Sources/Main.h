@@ -124,6 +124,9 @@ extern Object MichelleForward;
 extern Object MichelleLeft;
 extern Object MichelleRight;
 
+extern Object characterSelectBoxLeftInActive;
+extern Object characterSelectBoxRightInActive;
+
 
 extern bool Socket_Enabled;
 extern bool Connected;

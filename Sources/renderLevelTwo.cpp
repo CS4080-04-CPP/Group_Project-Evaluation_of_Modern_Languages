@@ -70,7 +70,14 @@ void SFMLApp::renderLevelTwo()
             window.draw(tempPlayerASprite);
             tempPlayerASprite.setPosition(hostCharacter->getPosition());
 
-            if (hostCharacter->isHost()) moveMents(collidableObjectsLevelTwo, tempPlayerASprite);
+            if (hostCharacter->isHost())
+            {
+
+                UpdateAnimationsJacob(tempPlayerASprite);
+                if (clientCharacter->getLevel() == 2)
+                    UpdateAnimationsMichelle(tempPlayerBSprite2);
+                moveMents(collidableObjectsLevelTwo, tempPlayerASprite);
+            }
 
         }
         else if (hostCharacter->getCharacterType() == 2 && hostCharacter->getLevel() == 2)
@@ -79,27 +86,45 @@ void SFMLApp::renderLevelTwo()
             window.draw(tempPlayerBSprite);
             tempPlayerBSprite.setPosition(hostCharacter->getPosition());
             
-            if (hostCharacter->isHost()) moveMents(collidableObjectsLevelTwo, tempPlayerBSprite);
+            if (hostCharacter->isHost())
+            {
 
+                UpdateAnimationsJacob(tempPlayerBSprite);
+                if (clientCharacter->getLevel() == 2)
+                    UpdateAnimationsMichelle(tempPlayerASprite2);
+                moveMents(collidableObjectsLevelTwo, tempPlayerBSprite);
+            }
         }
 
         if (clientCharacter->getCharacterType() == 1 && clientCharacter->getLevel() == 2)
         {
 
-            window.draw(tempPlayerASprite);
-            tempPlayerASprite.setPosition(clientCharacter->getPosition());
+            window.draw(tempPlayerASprite2);
+            tempPlayerASprite2.setPosition(clientCharacter->getPosition());
 
-            if (clientCharacter->isHost()) moveMents(collidableObjectsLevelTwo, tempPlayerASprite);
+            if (clientCharacter->isHost())
+            {
 
+                if (hostCharacter->getLevel() == 2)
+                    UpdateAnimationsJacob(tempPlayerBSprite);
+                UpdateAnimationsMichelle(tempPlayerASprite2);
+                moveMents(collidableObjectsLevelTwo, tempPlayerASprite2);
+            }
         }
         else if (clientCharacter->getCharacterType() == 2 && clientCharacter->getLevel() == 2)
         {
 
-            window.draw(tempPlayerBSprite);
-            tempPlayerBSprite.setPosition(clientCharacter->getPosition());
+            window.draw(tempPlayerBSprite2);
+            tempPlayerBSprite2.setPosition(clientCharacter->getPosition());
             
-            if (clientCharacter->isHost()) moveMents(collidableObjectsLevelTwo, tempPlayerBSprite);
+            if (clientCharacter->isHost())
+            {
 
+                if (hostCharacter->getLevel() == 2)
+                    UpdateAnimationsJacob(tempPlayerASprite);
+                UpdateAnimationsMichelle(tempPlayerBSprite2);
+                moveMents(collidableObjectsLevelTwo, tempPlayerBSprite2);
+            }
         }
     }
 }

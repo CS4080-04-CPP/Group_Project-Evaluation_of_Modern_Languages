@@ -226,7 +226,7 @@ void Character::receivePosition(const std::string& data)
                 catch (const std::exception& e)
                 {
 
-                    std::cout << "Error parsing position: " << e.what() << "\n";
+                    //std::cout << "Error parsing position: " << e.what() << "\n";
                 }
             }
         }
@@ -238,13 +238,13 @@ void Character::receivePosition(const std::string& data)
             try
             {
 
-                newCharacterType = std::stoi(typePart);
+                newCharacterType = std::stoi(typePart);               
                 characterType = newCharacterType; // Update character type
             }
             catch (const std::exception& e)
             {
 
-                std::cout << "Error parsing character type (this is normal ;p): " << e.what() << "\n";
+                //std::cout << "Error parsing character type (this is normal ;p): " << e.what() << "\n";
             }
         }
         else if (token.substr(0, 6) == "LEVEL:")
@@ -261,7 +261,7 @@ void Character::receivePosition(const std::string& data)
             catch (const std::exception& e)
             {
 
-                std::cout << "Error parsing level (this is normal ;p): " << e.what() << "\n";
+                //std::cout << "Error parsing level (this is normal ;p): " << e.what() << "\n";
             }
         }
     }

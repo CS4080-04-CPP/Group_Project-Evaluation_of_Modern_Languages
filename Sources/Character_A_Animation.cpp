@@ -10,37 +10,34 @@ void SFMLApp::UpdateAnimationsJacob(sf::Sprite character)
 	if (i > 15) i = 0;
 
 	float jiggleValue = std::sin(i / 3.0f) / 5;
+	static sf::Vector2f prevPosition;
 
-
-	JacobForward.centerOrigin();
-	JacobLeft.centerOrigin();
-	JacobRight.centerOrigin();
 	JacobForward.setPosition(character.getPosition().x + 56, character.getPosition().y + 83 + (jiggleValue * 4));
 	JacobLeft.setPosition(character.getPosition().x + 56, character.getPosition().y + 83 + (jiggleValue * 4));
 	JacobRight.setPosition(character.getPosition().x + 56, character.getPosition().y + 83+ (jiggleValue * 4));
 	
-	if (inputManager.isMoveLeft())
+	sf::Vector2f currentPosition = character.getPosition();
+	float dx = currentPosition.x - prevPosition.x;
+
+	
+	if (dx < -0.1f) // Moving left
 	{
 
-		// Apply rotation
 		JacobLeft.rotate(jiggleValue * 4);
-
-		// Render
 		JacobLeft.draw(window);
 	}
-	else if (inputManager.isMoveRight())
+	else if (dx > 0.1f) // Moving right
 	{
 
-		// Apply rotation
 		JacobRight.rotate(jiggleValue * 4);
-
-		// Render
 		JacobRight.draw(window);
 	}
-	else
+	else // Standing still
 	{
 
-		// Render
 		JacobForward.draw(window);
-	}	
+	}
+
+	// Update previous position
+	prevPosition = currentPosition;
 }

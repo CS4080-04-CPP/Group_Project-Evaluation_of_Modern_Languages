@@ -58,8 +58,13 @@
     <Image Include="Resources\CharacterB_Temp.png" />
     <Image Include="Resources\characterSelectBox.png" />
     <Image Include="Resources\characterSelectBoxActive.png" />
+    <Image Include="Resources\characterSelectBoxInActive.png" />
     <Image Include="Resources\Cloud1.png" />
     <Image Include="Resources\cursor.png" />
+    <Image Include="Resources\Jacob.png" />
+    <Image Include="Resources\Michelle.png" />
+    <Image Include="Resources\Michelle_Left.png" />
+    <Image Include="Resources\Michelle_Right.png" />
     <Image Include="Resources\Sky2.png" />
     <Image Include="Resources\TempTerrain.png" />
     <Image Include="Resources\Terrain.png" />

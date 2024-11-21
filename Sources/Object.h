@@ -11,6 +11,7 @@ class Object
 public:
     Object(const std::string& imagePath);
     ~Object();
+    void setScale(float x, float y);
     void toggleTileMode();
     const sf::Sprite& getSprite() const;
     void setTileRepeats(int horizontal, int vertical);

@@ -9,16 +9,16 @@ void SFMLApp::UpdateAnimationsMichelle(sf::Sprite character)
 	if (i2 > 15) i2 = 0;
 
 	float jiggleValue = std::sin(i2 / 3.0f) / 5;
+	static sf::Vector2f prevPosition;
 
-
-	MichelleForward.centerOrigin();
-	MichelleLeft.centerOrigin();
-	MichelleRight.centerOrigin();
 	MichelleForward.setPosition(character.getPosition().x + 56, character.getPosition().y + 83 + (jiggleValue * 4));
 	MichelleLeft.setPosition(character.getPosition().x + 56, character.getPosition().y + 83 + (jiggleValue * 4));
 	MichelleRight.setPosition(character.getPosition().x + 56, character.getPosition().y + 83 + (jiggleValue * 4));
 
-	if (inputManager.isMoveLeft())
+	sf::Vector2f currentPosition = character.getPosition();
+	float dx = currentPosition.x - prevPosition.x;
+
+	if (dx < -0.1f) // Moving left
 	{
 
 		// Apply rotation
@@ -27,7 +27,7 @@ void SFMLApp::UpdateAnimationsMichelle(sf::Sprite character)
 		// Render
 		MichelleLeft.draw(window);
 	}
-	else if (inputManager.isMoveRight())
+	else if (dx > 0.1f) // Moving right
 	{
 
 		// Apply rotation
@@ -42,4 +42,6 @@ void SFMLApp::UpdateAnimationsMichelle(sf::Sprite character)
 		// Render
 		MichelleForward.draw(window);
 	}
+
+	prevPosition = currentPosition;
 }

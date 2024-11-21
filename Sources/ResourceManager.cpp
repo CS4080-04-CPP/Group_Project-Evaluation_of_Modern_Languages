@@ -21,6 +21,9 @@ Object MichelleForward("Resources/Michelle.png");
 Object MichelleLeft("Resources/Michelle_Left.png");
 Object MichelleRight("Resources/Michelle_Right.png");
 
+Object characterSelectBoxLeftInActive("Resources/characterSelectBoxInActive.png");
+Object characterSelectBoxRightInActive("Resources/characterSelectBoxInActive.png");
+
 void SFMLApp::loadResources()
 {
 
@@ -36,7 +39,18 @@ void SFMLApp::loadResources()
     Sky.setPosition(0, 0);
     Sky2.setPosition(0, 0);
 
-    JacobForward.setPosition(0, 0);
+    characterSelectBoxLeftInActive.setPosition(screenWidth / 2 - 250, screenHeight / 2 - 250);
+    characterSelectBoxRightInActive.setPosition(screenWidth / 2 + 50, screenHeight / 2 - 250);
+    characterSelectBoxLeftInActive.setScale(2, 2);
+    characterSelectBoxRightInActive.setScale(2, 2);
+
+    JacobForward.centerOrigin();
+    JacobLeft.centerOrigin();
+    JacobRight.centerOrigin();
+
+    MichelleForward.centerOrigin();
+    MichelleLeft.centerOrigin();
+    MichelleRight.centerOrigin();
 
     collidableObjectsLevelOne.push_back(LeftWall);
     collidableObjectsLevelOne.push_back(RightWall);
