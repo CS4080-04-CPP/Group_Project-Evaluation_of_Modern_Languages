@@ -193,6 +193,21 @@
     <Image Include="..\..\..\..\Downloads\Michelle_Right.png">
       <Filter>Resource Files\MainMenu</Filter>
     </Image>
+    <Image Include="Resources\characterSelectBoxInActive.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Jacob.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Michelle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Michelle_Left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Michelle_Right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Pacifico.ttf">
@@ -206,13 +221,13 @@
     <Media Include="..\..\..\..\Downloads\click (1).mp3">
       <Filter>Sound Effects</Filter>
     </Media>
-    <Media Include="..\..\..\Desktop\Sound effects\2 Landing After Jump.mp3">
-      <Filter>Sound Effects</Filter>
-    </Media>
-    <Media Include="..\RPS-4700\RPSGame\Sound effects\1 Walking FootSteps.mp3">
-      <Filter>Sound Effects</Filter>
-    </Media>
     <Media Include="..\..\..\..\Downloads\Jumping (1).mp3">
+      <Filter>Sound Effects</Filter>
+    </Media>
+    <Media Include="..\..\..\..\Downloads\Cutewalking.mp3">
+      <Filter>Sound Effects</Filter>
+    </Media>
+    <Media Include="..\..\..\..\Downloads\Landing - Sound Effect.mp3">
       <Filter>Sound Effects</Filter>
     </Media>
   </ItemGroup>
