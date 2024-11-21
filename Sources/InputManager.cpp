@@ -3,7 +3,7 @@
 #include <SFML/Window.hpp>
 #include <iostream> // Required for std::cerr
 
-void InputManager::processInput(sf::Window& window)
+void InputManager::processInput(sf::Window& window, bool isOnGround)
 {
     // Create static sound buffers and sounds to avoid reloading files every frame
     static sf::SoundBuffer walkingBuffer;
@@ -62,15 +62,25 @@ void InputManager::processInput(sf::Window& window)
 
     // Handle Space key for jumping
     bool isJumping = sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W);
-    if (isJumping && !jump)
+    if (isJumping && !jump && isOnGround)
     {
         jumpingSound.play();
     }
 
-    // Simulate landing sound when jump key is released
-    if (jump && !isJumping)
+    // Immediate landing sound
+    static bool wasInAir = false; // Tracks if the player was in the air
+    if (!isOnGround)
     {
-        landingSound.play();
+        wasInAir = true; // Player is airborne
+    }
+    else if (wasInAir) // Player lands
+    {
+        if (landingSound.getStatus() != sf::Sound::Playing) // Ensure no overlapping
+        {
+            landingSound.stop(); // Stop any previous instance immediately
+            landingSound.play(); // Play the landing sound immediately
+        }
+        wasInAir = false; // Reset air state after landing
     }
 
     // Update movement flags
