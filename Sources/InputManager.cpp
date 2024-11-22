@@ -18,10 +18,10 @@ void InputManager::processInput(sf::Window& window, bool isGrounded)
     // Handle D key for moving right
     bool isWalkingRight = sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 
-    // Handle Space key for jumping
-    bool isJumping = sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::W);
+    // Handle Space key for jumping only if grounded
+    bool isJumping = isGrounded && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
+                                    sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ||
+                                    sf::Keyboard::isKeyPressed(sf::Keyboard::W));
 
     // Update movement flags
     moveLeft = isWalkingLeft;
