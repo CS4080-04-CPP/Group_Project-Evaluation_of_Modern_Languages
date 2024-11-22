@@ -24,8 +24,33 @@ Object MichelleRight("Resources/Michelle_Right.png");
 Object characterSelectBoxLeftInActive("Resources/characterSelectBoxInActive.png");
 Object characterSelectBoxRightInActive("Resources/characterSelectBoxInActive.png");
 
+
+sf::SoundBuffer walkingBuffer;
+sf::SoundBuffer landingBuffer;
+sf::SoundBuffer jumpingBuffer;
+sf::Sound walkingSound;
+sf::Sound landingSound;
+sf::Sound jumpingSound;
+
+
 void SFMLApp::loadResources()
 {
+
+    // Load sound buffers (call this once, typically at initialization)
+    if (!walkingBuffer.loadFromFile("Resources/Walking.mp3")) {
+        std::cerr << "Failed to load walking sound!" << std::endl;
+    }
+    if (!landingBuffer.loadFromFile("Resources/Landing.mp3")) {
+        std::cerr << "Failed to load landing sound!" << std::endl;
+    }
+    if (!jumpingBuffer.loadFromFile("Resources/Jumping.mp3")) {
+        std::cerr << "Failed to load jumping sound!" << std::endl;
+    }
+
+    // Set the buffers for the sounds
+    walkingSound.setBuffer(walkingBuffer);
+    landingSound.setBuffer(landingBuffer);
+    jumpingSound.setBuffer(jumpingBuffer);
 
     LeftWall.setPosition(-60, 0);
     RightWall.setPosition(1920, 0);

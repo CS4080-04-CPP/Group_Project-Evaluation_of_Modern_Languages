@@ -80,7 +80,6 @@ void SFMLApp::handleMainMenuEvents(sf::Event event)
                     stateChangeBool = true;
                 }
 
-                mainMenuState = true;
             }
             // Character B selection logic
             else if (mousePos.x >= 1019 && mousePos.x <= 1257 && mousePos.y >= 303 && mousePos.y <= 577 && hostCharacter->getCharacterType() != 2 &&

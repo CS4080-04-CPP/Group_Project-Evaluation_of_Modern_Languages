@@ -1,7 +1,7 @@
 #include "InputManager.h"
 #include <SFML/Window.hpp>
 
-void InputManager::processInput(sf::Window& window, bool isGrounded)
+void InputManager::processInput(sf::Window& window)
 {
     // Only process input if the window is in focus
     if (!window.hasFocus())
@@ -19,9 +19,9 @@ void InputManager::processInput(sf::Window& window, bool isGrounded)
     bool isWalkingRight = sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 
     // Handle Space key for jumping only if grounded
-    bool isJumping = isGrounded && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
-                                    sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ||
-                                    sf::Keyboard::isKeyPressed(sf::Keyboard::W));
+    bool isJumping = (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
+                      sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ||
+                      sf::Keyboard::isKeyPressed(sf::Keyboard::W));
 
     // Update movement flags
     moveLeft = isWalkingLeft;

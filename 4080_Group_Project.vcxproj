@@ -75,10 +75,9 @@
     <Font Include="Resources\Pacifico.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="..\..\..\..\Downloads\click (1).mp3" />
-    <Media Include="..\..\..\..\Downloads\Cutewalking.mp3" />
-    <Media Include="..\..\..\..\Downloads\Jumping (1).mp3" />
-    <Media Include="..\..\..\..\Downloads\Landing - Sound Effect.mp3" />
+    <Media Include="Resources\Jumping.mp3" />
+    <Media Include="Resources\Landing.mp3" />
+    <Media Include="Resources\Walking.mp3" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

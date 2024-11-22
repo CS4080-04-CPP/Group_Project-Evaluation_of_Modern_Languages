@@ -18,6 +18,7 @@
 #include <thread>
 #include <memory>
 #include <mutex>
+#include <SFML/Audio.hpp>
 
 // Define application class
 class SFMLApp
@@ -134,6 +135,13 @@ extern bool Host;
 extern bool HostCharacterSelection;
 extern bool ClientCharacterSelection;
 extern bool isGrounded;
+
+extern sf::Sound walkingSound;
+extern sf::Sound landingSound;
+extern sf::Sound jumpingSound;
+extern sf::SoundBuffer walkingBuffer;
+extern sf::SoundBuffer landingBuffer;
+extern sf::SoundBuffer jumpingBuffer;
 
 extern int screenWidth;
 extern int screenHeight;
