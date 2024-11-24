@@ -9,5 +9,5 @@ Presentation: [Link]
 Here is a quick video representation of our project:
 
 
-[![IMAGE ALT TEXT](![gitBack](https://github.com/user-attachments/assets/465fef14-0fb6-4647-ae2a-0e8cbb0db83c))](https://drive.google.com/file/d/1wL0rfFSasSfZPd6I8XLB80nMRxZcUQQH/view?usp=sharing "Video Title")
+[![IMAGE ALT TEXT](https://github.com/user-attachments/assets/465fef14-0fb6-4647-ae2a-0e8cbb0db83c)](https://drive.google.com/file/d/1wL0rfFSasSfZPd6I8XLB80nMRxZcUQQH/view?usp=sharing "Video Title")
 
