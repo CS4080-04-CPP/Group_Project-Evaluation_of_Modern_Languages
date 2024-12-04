@@ -121,7 +121,7 @@ void Character::sendPosition(sf::TcpSocket& socket)
 {
 
     std::ostringstream dataStream;
-    dataStream << "POS:" << position.x << "," << position.y << ";TYPE:" << characterType << ";LEVEL:" << level; // Include position and type and level
+    dataStream << "POS:" << position.x << "," << position.y << ";TYPE:" << characterType << ";LEVEL:" << level; // Includes position, type, and level
 
     std::string data = dataStream.str();
     sendData(socket, data);

@@ -1,26 +1,37 @@
 #include "Main.h"
 
+// Using namespaces allows for easier access to system commands,
+// they will not be used past main, but for example
+// std::cout << "", becomes cout << "";
 using namespace std;
 
+// To Avoid complex resource scaling, it is fixed at 1080p.
 int screenWidth = 1920;
 int screenHeight = 1080;
 
+// All these variables set outside of the main function are
+// extern variables. These are variables that do not fit in the SFML class
+// and need to talk to other methods. Consider them public variables.
 bool Connected;
 bool Host;
 bool HostCharacterSelection;
 bool ClientCharacterSelection;
 bool isGrounded; 
 
+// These are object initilizers which needed to be public extern variables
+
+//Initilize an InputManager
+InputManager inputManager;
+
 // Declare shared pointers for character objects
 std::shared_ptr<Character> hostCharacter = std::make_shared<Character>("HostCharacter", sf::Vector2f(0.f, 0.f), 0);
 std::shared_ptr<Character> clientCharacter = std::make_shared<Character>("ClientCharacter", sf::Vector2f(0.f, 0.f), 0);
 
+// Originally these were not public, but my movement infastructer needed them.
+
 // Declare vectors to determine what object instances are collidable with a charcter.
 std::vector<Object> collidableObjectsLevelOne;
 std::vector<Object> collidableObjectsLevelTwo;
-
-//Initilize an InputManager
-InputManager inputManager;
 
 int main()
 {
@@ -50,14 +61,16 @@ SFMLApp::SFMLApp()
     window.setMouseCursorVisible(false);
 
     loadResources();                    // Loads all the resources before the program begins.
+                                        // Had this demo been larger, it would have loaded dynamically
 
     isGrounded = false;                 // Turns gravity off when touching the ground, otherwise it jitters.
     isRunning = true;                   // When the window closes, this kills the program.
     
     currentState = State::MAIN_MENU;    // Begins the program at the Main Menu State.
 
-    delayedState = State::LEVEL_ONE;    // This is used to keep track of individual players 
-                                        // states while in the pause menu.
+    delayedState = State::LEVEL_ONE;    // This is used to keep track of an individual players 
+                                        // states while in the pause menu. So when in level one, 
+                                        // you hit escape it needs to remember you were at level one.
 
     mainMenuState = true;               // Determines if the Main Menu's background is blurred (not necessary just fun).
 
@@ -69,13 +82,12 @@ void SFMLApp::run()
 
     sf::Clock clock;
 
-
     while (isRunning && window.isOpen())
     {
 
         sf::Time deltaTime = clock.restart();
 
-        update(window);      // Update states and Animation
+        update(window);      // Update states
         processEvents();     // Handle inputs
         render();            // Draw everything to the window
         

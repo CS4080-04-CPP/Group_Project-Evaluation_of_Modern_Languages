@@ -6,19 +6,22 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Network.hpp>
+#include <SFML/Audio.hpp>
 
+// Include object headers
 #include "Character.h"
 #include "Object.h" 
 #include "InputManager.h"
 
+// Include basic c++ functionality
 #include <iostream>
 #include <string>
 #include <sstream>
 
+// Include the abiluity to manipulate and safely use threads
 #include <thread>
 #include <memory>
 #include <mutex>
-#include <SFML/Audio.hpp>
 
 // Define application class
 class SFMLApp
@@ -38,7 +41,7 @@ public:
         LEVEL_TWO
     };
 
-    // Current state of the application
+    // Current states of the application
     State currentState;
     State delayedState;
 
@@ -102,6 +105,9 @@ private:
 
 };
 
+// The object class is a solution to modulizing sf::sprite/texture management
+// The main menu uses resources directly from the SFML class, this was undesirable
+// The Object.cpp/.h does it sleeker with the downside of it being publicly accessable
 
 // Objects and Backgrounds
 extern Object Floor;
@@ -128,7 +134,7 @@ extern Object MichelleRight;
 extern Object characterSelectBoxLeftInActive;
 extern Object characterSelectBoxRightInActive;
 
-
+// These were made extern by neccesity
 extern bool Socket_Enabled;
 extern bool Connected;
 extern bool Host;
@@ -152,8 +158,12 @@ extern std::vector<Object> collidableObjectsLevelTwo;
 extern InputManager inputManager;
 extern std::mutex characterMutex;
 
+// These are the three connecting methods for this programs core functionalities
+
+// MoveMents calculates a characters position, velocity, and colision with other objects
 void moveMents(const std::vector<Object>& collidableObjects, sf::Sprite tempPlayerASprite);
 
+// Host/Connect methods talk to eachother to move player position, player type, and level info.
 void hostGameLogic(Character& character, Character& character2);
 void connectGameLogic(Character& character, Character& character2);
 

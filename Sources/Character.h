@@ -1,25 +1,16 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+// Character needs access to these includes
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <sstream>
 #include <iostream>
 
+// Define Character class
 class Character
 {
-
-private:
-    std::string name;
-    sf::Vector2f position;
-    sf::Sprite sprite;
-    float velocityX = 0;
-    float velocityY = 0;
-    bool host;
-    int state;
-    int characterType;
-    int level = 1;
 
 public:
     // Constructor
@@ -62,10 +53,30 @@ public:
     void sendData(sf::TcpSocket& socket, const std::string& data);
     std::string receiveData(sf::TcpSocket& socket);
 
+private:
+    std::string name;
+    sf::Vector2f position;
+    sf::Sprite sprite;
+
+    float velocityX = 0;
+    float velocityY = 0;
+
+    bool host;
+    int state;
+    int characterType;
+
+    int level = 1;
+
 };
 
 extern std::shared_ptr<Character> hostCharacter;
 extern std::shared_ptr<Character> clientCharacter;
+
+// There are two instances of Character created no matter what.
+// They, however need to be sudo initilized until the player
+// chooses a character type.
+// Because of this there intilization is done in an actual method
+// that happens later on using shared_ptr's.
 
 void initializeCharacter(std::shared_ptr<Character>& character, const std::string& name, const sf::Vector2f& position, int id);
 
