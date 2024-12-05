@@ -56,11 +56,11 @@ void SFMLApp::handleMainMenuEvents(sf::Event event)
         else if (!Socket_Enabled || Connected)
         {
 
-            // Character selection logic
+            // Character A selection logic
             if (mousePos.x >= 717 && mousePos.x <= 959 && mousePos.y >= 308 && mousePos.y <= 578 && hostCharacter->getCharacterType() != 1 &&
                                                                                                     clientCharacter->getCharacterType() != 1)
             {
-                //std::cout << hostCharacter->getCharacterType();
+
                 if (Connected == false) // Single-player or no connection
                 {
 

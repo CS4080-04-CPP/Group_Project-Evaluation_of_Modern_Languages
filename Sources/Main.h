@@ -18,10 +18,9 @@
 #include <string>
 #include <sstream>
 
-// Include the abiluity to manipulate and safely use threads
+// Include the ability to manipulate threads
 #include <thread>
 #include <memory>
-#include <mutex>
 
 // Define application class
 class SFMLApp
@@ -156,7 +155,6 @@ extern std::vector<Object> collidableObjectsLevelOne;
 extern std::vector<Object> collidableObjectsLevelTwo;
 
 extern InputManager inputManager;
-extern std::mutex characterMutex;
 
 // These are the three connecting methods for this programs core functionalities
 

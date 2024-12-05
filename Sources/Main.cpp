@@ -11,14 +11,14 @@ int screenHeight = 1080;
 
 // All these variables set outside of the main function are
 // extern variables. These are variables that do not fit in the SFML class
-// and need to talk to other methods. Consider them public variables.
+// and need to talk to other classes. Consider them public variables.
 bool Connected;
 bool Host;
 bool HostCharacterSelection;
 bool ClientCharacterSelection;
 bool isGrounded; 
 
-// These are object initilizers which needed to be public extern variables
+// These are class initilizers which needed to be public extern variables
 
 //Initilize an InputManager
 InputManager inputManager;
@@ -73,7 +73,6 @@ SFMLApp::SFMLApp()
                                         // you hit escape it needs to remember you were at level one.
 
     mainMenuState = true;               // Determines if the Main Menu's background is blurred (not necessary just fun).
-
 }
 
 // Main game loop
@@ -87,15 +86,12 @@ void SFMLApp::run()
 
         sf::Time deltaTime = clock.restart();
 
-        update(window);      // Update states
+        update(window);      // Update inputs
         processEvents();     // Handle inputs
-        render();            // Draw everything to the window
-        
+        render();            // Draw resources to window        
 
         sf::sleep(sf::seconds(1.f / 60.f) - deltaTime); // Framerate Target
-
     }
-
 }
 
 // Destructor
@@ -129,7 +125,7 @@ SFMLApp::~SFMLApp()
     SelectbackgroundSpriteLeftActive = sf::Sprite();
     SelectbackgroundSpriteRightActive = sf::Sprite();
 
-    std::cout << "Resources successfully released in SFMLApp destructor." << std::endl;
+    std::cout << "Resources successfully released in destructor." << std::endl;
 
 
 }
