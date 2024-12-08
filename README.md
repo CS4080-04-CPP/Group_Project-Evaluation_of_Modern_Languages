@@ -4,7 +4,7 @@ This team project involves implementing an application program that demonstrates
 
 Term Paper: [Link]
 
-Presentation: [link link]([URL](https://docs.google.com/presentation/d/1TmU_3gpzCSGnYLX06FEbLB-9PqDm5YOm/edit?usp=sharing&ouid=100172860095767298080&rtpof=true&sd=true))
+Presentation: [link]((https://docs.google.com/presentation/d/1TmU_3gpzCSGnYLX06FEbLB-9PqDm5YOm/edit?usp=sharing&ouid=100172860095767298080&rtpof=true&sd=true))
 
 Here is a quick video representation of our project:
 
